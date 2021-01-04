@@ -18,7 +18,6 @@
 .env.test.local
 .env.production.local
 api-appSpace.code-workspace
-.eslintcache
 
 npm-debug.log*
 yarn-debug.log*
