@@ -50,23 +50,27 @@ function App() {
   }, [fetchUrl]);
 
   async function getData(url) {    
-    let total = [];
+    try {
+      let total = [];
 
-    let response = await fetch(url);
-    let data = await response.json();    
-    total = total.concat(data.results);    
-    
-    while(data.next) {      
-      if (data.next === null) {
-        break;
-      } else {
-        data = await fetch(data.next);
-        data = await data.json();        
-        total = total.concat(data.results);
-      }        
-    }
-    setData(total);
-    setIsLoading(false);    
+      let response = await fetch(url);
+      let data = await response.json();    
+      total = total.concat(data.results);    
+      
+      while(data.next) {      
+        if (data.next === null) {
+          break;
+        } else {
+          data = await fetch(data.next);
+          data = await data.json();        
+          total = total.concat(data.results);
+        }        
+      }
+      setData(total);
+      setIsLoading(false);
+    } catch(error) {
+      setError(error);
+    }  
   }
 
   //console.log(data);
