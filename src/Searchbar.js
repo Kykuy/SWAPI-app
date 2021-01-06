@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 function Searchbar(props) {
   let datatypes = ['People', 'Vehicles', 'Starships', 'Planets', 'Species', 'Films'];
-  return (
-    <>
+  return (    
     <form>
 
       <fieldset>
@@ -28,7 +27,7 @@ function Searchbar(props) {
         <label htmlFor = 'films'>Films</label> */}
 
         {datatypes.map(datatype => {
-          return <>
+          return <Fragment key = {datatype}>
           <input type = 'radio' value = {datatype.toLowerCase()} name = 'dataType' id = {datatype.toLowerCase()} checked = {props.selected === datatype.toLowerCase()}
           onChange = {(event) => {
             props.setFetchUrl(`https://swapi.py4e.com/api/${event.target.value}/`);
@@ -37,15 +36,16 @@ function Searchbar(props) {
           }
           }></input>
           <label htmlFor = {datatype.toLowerCase()}>{datatype}</label>
-          </>
+          </Fragment>
         })}
 
       </fieldset>
       
       <label htmlFor = 'search-input'>Search for Star Wars Data!</label>
       <input type = 'search' id = 'search-input' placeholder = 'find data. SW data.' onChange = {(event) => props.setSearchInput(event.target.value)}></input>
+      
     </form>
-    </>
+    
   );
 }
 

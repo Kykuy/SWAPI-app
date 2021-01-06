@@ -33,8 +33,8 @@ const Output = (props) => {
     <section>
       {finalOutput.map(item => {
         return (
-          <article>
-            <h1 key = {item.url}>Name: {item.name}</h1>
+          <article key = {item.url}>
+            <h1>Name: {item.name}</h1>
           </article>
         );
       })}      
@@ -44,8 +44,8 @@ const Output = (props) => {
     <section>
       {finalOutput.map(item => {
         return (
-          <article>
-            <h1 key = {item.url}>Title: {item.title}</h1>
+          <article key = {item.url}>
+            <h1>Title: {item.title}</h1>
           </article>
         );
       })}      
