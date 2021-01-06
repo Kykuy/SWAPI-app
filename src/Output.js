@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Output = (props) => { 
   //console.log('output props', props);
@@ -23,11 +23,37 @@ const Output = (props) => {
   //       return acc;
   //     }
   //   }, []);
-  // }  
-  
+  // }
+
+  let [pages, setPages] = useState({});  
+  let {data} = props;
+
+  useEffect(() => {
+    createPages(data);
+  }, [data]);
+   
+
+  function createPages(data) {
+    if (data.length > 10) {
+      let total = Array.from(data);
+      let currPage = 1;
+      let pagesDictionary = {};
+
+      while (total.length) {
+        let page = total.splice(0, 10);
+        pagesDictionary[currPage] = page;
+        currPage++;
+      } 
+      
+      setPages(pagesDictionary);
+    }
+  }
+
+  console.log('pages', pages);
+
   let finalOutput = props.selected !== 'films' ?
-   props.data.filter( item => item.name.toLowerCase().includes( props.searchInput.toLowerCase() ) ) :
-   props.data.filter( item => item.title.toLowerCase().includes( props.searchInput.toLowerCase() ) );
+   data.filter( item => item.name.toLowerCase().includes( props.searchInput.toLowerCase() ) ) :
+   data.filter( item => item.title.toLowerCase().includes( props.searchInput.toLowerCase() ) );
 
   return props.selected !== 'films' ? (    
     <section>
