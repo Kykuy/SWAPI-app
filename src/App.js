@@ -10,7 +10,8 @@ function App() {
   const [selectedDataType, setSelectedDataType] = useState('people');
   const [fetchUrl, setFetchUrl] = useState(`https://swapi.py4e.com/api/${selectedDataType}/`);
   const [searchInput, setSearchInput] = useState('');  
-
+  let [pages, setPages] = useState({});
+  let [pageSelected, setPageSelected] = useState('1');
   // useEffect(() => {
   //   fetch(fetchUrl)
   //     .then(response => response.json())           
@@ -52,11 +53,15 @@ function App() {
   async function getData(url) {    
     try {
       let total = [];
+      let currPage = 1;
+      let pagesDictionary = {};
 
       let response = await fetch(url);
       let data = await response.json();    
       total = total.concat(data.results);    
-      
+      pagesDictionary[currPage] = data.results;
+      currPage++;
+
       while(data.next) {      
         if (data.next === null) {
           break;
@@ -64,9 +69,12 @@ function App() {
           data = await fetch(data.next);
           data = await data.json();        
           total = total.concat(data.results);
+          pagesDictionary[currPage] = data.results;
+          currPage++;
         }        
       }
       setData(total);
+      setPages(pagesDictionary);
       setIsLoading(false);
     } catch(error) {
       setError(error);
@@ -88,8 +96,8 @@ function App() {
         <h1>Starting...</h1>
       </header>
       <main>
-        <Searchbar selected = {selectedDataType} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setSearchInput = {setSearchInput}/>
-        <Output data = {data} selected = {selectedDataType} searchInput = {searchInput} />
+        <Searchbar selected = {selectedDataType} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} setSearchInput = {setSearchInput}/>
+        <Output data = {data} selected = {selectedDataType} searchInput = {searchInput} pages = {pages} pageSelected = {pageSelected} setPageSelected = {setPageSelected}/>
       </main>
       </>
     );

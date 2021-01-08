@@ -25,32 +25,32 @@ const Output = (props) => {
   //   }, []);
   // }
 
-  let [pages, setPages] = useState({});
-  let [pageSelected, setPageSelected] = useState('1');
+  // let [pages, setPages] = useState({});
+  // let [pageSelected, setPageSelected] = useState('1');
   let {data} = props;
 
   // createPages(data);
 
-  useEffect(() => {
-    createPages(data);
-  }, [data]);
+  // useEffect(() => {
+  //   createPages(data);
+  // }, [data]);
    
 
-  function createPages(data) {
-    if (data.length > 10) {
-      let total = Array.from(data);
-      let currPage = 1;
-      let pagesDictionary = {};
+  // function createPages(data) {
+  //   if (data.length > 10) {
+  //     let total = Array.from(data);
+  //     let currPage = 1;
+  //     let pagesDictionary = {};
 
-      while (total.length) {
-        let page = total.splice(0, 10);
-        pagesDictionary[currPage] = page;
-        currPage++;
-      } 
+  //     while (total.length) {
+  //       let page = total.splice(0, 10);
+  //       pagesDictionary[currPage] = page;
+  //       currPage++;
+  //     } 
       
-      setPages(pagesDictionary);
-    }
-  }
+  //     setPages(pagesDictionary);
+  //   }
+  // }
 
   // console.log('pages', pages);
 
@@ -61,10 +61,10 @@ const Output = (props) => {
   return props.selected !== 'films' ? (
     <>
     <section>
-      {Object.keys(pages).map(page => {
+      {Object.keys(props.pages).map(page => {
         return (
           <button key = {`page #${page}`} onClick = {(event) => {
-            setPageSelected(page, 10);
+            props.setPageSelected(page, 10);
             }
             }>{page}</button>
         );
@@ -78,7 +78,7 @@ const Output = (props) => {
           </article>
         );
       })} */}
-      {pages[pageSelected].map(item => {
+      {props.pages[props.pageSelected].map(item => {
         return (
           <article key = {item.url}>
             <h1>Name: {item.name}</h1>
