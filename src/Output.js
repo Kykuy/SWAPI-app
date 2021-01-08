@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const Output = (props) => { 
-  //console.log('output props', props);
+  console.log('output props', props);
   //let filtered = props.data.filter(item => item !== undefined);
   //console.log('filtered data', filtered);
   
@@ -25,8 +25,11 @@ const Output = (props) => {
   //   }, []);
   // }
 
-  let [pages, setPages] = useState({});  
+  let [pages, setPages] = useState({});
+  let [pageSelected, setPageSelected] = useState('1');
   let {data} = props;
+
+  // createPages(data);
 
   useEffect(() => {
     createPages(data);
@@ -49,24 +52,43 @@ const Output = (props) => {
     }
   }
 
-  console.log('pages', pages);
+  // console.log('pages', pages);
 
   let finalOutput = props.selected !== 'films' ?
    data.filter( item => item.name.toLowerCase().includes( props.searchInput.toLowerCase() ) ) :
    data.filter( item => item.title.toLowerCase().includes( props.searchInput.toLowerCase() ) );
 
-  return props.selected !== 'films' ? (    
+  return props.selected !== 'films' ? (
+    <>
     <section>
-      {finalOutput.map(item => {
+      {Object.keys(pages).map(page => {
+        return (
+          <button key = {`page #${page}`} onClick = {(event) => {
+            setPageSelected(page, 10);
+            }
+            }>{page}</button>
+        );
+      })}
+    </section>     
+    <section>
+      {/* {finalOutput.map(item => {
         return (
           <article key = {item.url}>
             <h1>Name: {item.name}</h1>
           </article>
         );
-      })}      
-    </section>    
+      })} */}
+      {pages[pageSelected].map(item => {
+        return (
+          <article key = {item.url}>
+            <h1>Name: {item.name}</h1>
+          </article>
+        );
+      })}
+    </section>
+    </>    
   ) :
-  (    
+  (      
     <section>
       {finalOutput.map(item => {
         return (
@@ -75,7 +97,8 @@ const Output = (props) => {
           </article>
         );
       })}      
-    </section>    
+    </section>
+        
   );
 }
 
