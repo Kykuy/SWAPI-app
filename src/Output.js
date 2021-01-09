@@ -54,9 +54,9 @@ const Output = (props) => {
 
   // console.log('pages', pages);
 
-  let finalOutput = props.selected !== 'films' ?
-   data.filter( item => item.name.toLowerCase().includes( props.searchInput.toLowerCase() ) ) :
-   data.filter( item => item.title.toLowerCase().includes( props.searchInput.toLowerCase() ) );
+  // let finalOutput = props.selected !== 'films' ?
+  //  data.filter( item => item.name.toLowerCase().includes( props.searchInput.toLowerCase() ) ) :
+  //  data.filter( item => item.title.toLowerCase().includes( props.searchInput.toLowerCase() ) );
 
   return props.selected !== 'films' ? (
     <>
@@ -88,17 +88,35 @@ const Output = (props) => {
     </section>
     </>    
   ) :
-  (      
+  ( 
+    <>
     <section>
-      {finalOutput.map(item => {
+      {Object.keys(props.pages).map(page => {
+        return (
+          <button key = {`page #${page}`} onClick = {(event) => {
+            props.setPageSelected(page, 10);
+            }
+            }>{page}</button>
+        );
+      })}
+    </section>     
+    <section>
+      {/* {finalOutput.map(item => {
         return (
           <article key = {item.url}>
             <h1>Title: {item.title}</h1>
           </article>
         );
-      })}      
+      })} */}
+      {props.pages[props.pageSelected].map(item => {
+        return (
+          <article key = {item.url}>
+            <h1>Title: {item.title}</h1>
+          </article>
+        );
+      })}
     </section>
-        
+    </>    
   );
 }
 
