@@ -61,13 +61,42 @@ const Output = (props) => {
   return props.selected !== 'films' ? (
     <>
     <section>
-      {Object.keys(props.pages).map(page => {
+      {/* {Object.keys(props.pages).map(page => {
         return (
           <button key = {`page #${page}`} onClick = {(event) => {
             props.setPageSelected(page, 10);
             }
             }>{page}</button>
         );
+      })} */}
+      {Object.keys(props.pages).flatMap((page, index, array) => {
+        return page === '1' || page === props.pageSelected || page === array[array.length - 1] ? (
+          <button key = {`page #${page}`} onClick = {(event) => {
+            props.setPageSelected(page, 10);
+            }
+          }>{page}</button>
+        ) : Math.abs(page - props.pageSelected) === 1 ? page - 1 > 1 && props.pageSelected - page === 1 ? (
+          <>
+          <span>...</span>
+          <button key = {`page #${page}`} onClick = {(event) => {
+            props.setPageSelected(page, 10);
+            }
+          }>{page}</button>
+          </>
+        ) : array[array.length - 1] - page > 1 ? (
+          <>          
+          <button key = {`page #${page}`} onClick = {(event) => {
+            props.setPageSelected(page, 10);
+            }
+          }>{page}</button>
+          <span>...</span>
+          </>
+        ) : (
+          <button key = {`page #${page}`} onClick = {(event) => {
+            props.setPageSelected(page, 10);
+            }
+          }>{page}</button>
+        ) : [];
       })}
     </section>     
     <section>
@@ -96,7 +125,7 @@ const Output = (props) => {
           <button key = {`page #${page}`} onClick = {(event) => {
             props.setPageSelected(page, 10);
             }
-            }>{page}</button>
+          }>{page}</button>
         );
       })}
     </section>     
