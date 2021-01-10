@@ -83,7 +83,7 @@ const Output = (props) => {
             }
           }>{page}</button>
           </>
-        ) : array[array.length - 1] - page > 1 ? (
+        ) : array[array.length - 1] - page > 1 && props.pageSelected - page !== 1 ? (
           <>          
           <button key = {`page #${page}`} onClick = {(event) => {
             props.setPageSelected(page, 10);
