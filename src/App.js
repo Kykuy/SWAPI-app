@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import Searchbar from "./Searchbar.js";
+import Pagination from "./Pagination.js";
 import Output from './Output.js';
 
 function App() {
@@ -10,8 +11,8 @@ function App() {
   const [selectedDataType, setSelectedDataType] = useState('people');
   const [fetchUrl, setFetchUrl] = useState(`https://swapi.py4e.com/api/${selectedDataType}/`);
   const [searchInput, setSearchInput] = useState('');  
-  let [pages, setPages] = useState({});
-  let [pageSelected, setPageSelected] = useState('1');
+  const [pages, setPages] = useState({});
+  const [pageSelected, setPageSelected] = useState('1');
   // useEffect(() => {
   //   fetch(fetchUrl)
   //     .then(response => response.json())           
@@ -96,8 +97,9 @@ function App() {
         <h1>Starting...</h1>
       </header>
       <main>
-        <Searchbar selected = {selectedDataType} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} setSearchInput = {setSearchInput}/>
-        <Output data = {data} selected = {selectedDataType} searchInput = {searchInput} pages = {pages} pageSelected = {pageSelected} setPageSelected = {setPageSelected}/>
+        <Searchbar selected = {selectedDataType} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setSearchInput = {setSearchInput}/>
+        <Pagination pages = {pages} pageSelected = {pageSelected} setPageSelected = {setPageSelected} />
+        <Output data = {data} selected = {selectedDataType} searchInput = {searchInput} pages = {pages} pageSelected = {pageSelected} />
       </main>
       </>
     );
