@@ -9,32 +9,32 @@ function Pagination(props) {
       }
     }}>&lt;</button>    
       {Object.keys(props.pages).flatMap((page, index, array) => {
-        return page === '1' || page === props.pageSelected || page === array[array.length - 1] ?
+        return parseInt(page, 10) === 1 || parseInt(page, 10) === props.pageSelected || parseInt(page, 10) === parseInt(array[array.length - 1], 10) ?
         
         (
           <button key = {`page #${page}`} onClick = {(event) => {
-            props.setPageSelected(page);
-            }
+            props.setPageSelected(parseInt(page, 10));
+          }
           }>{page}</button>
-        ) : Math.abs(page - props.pageSelected) === 1 ?
+        ) : Math.abs(parseInt(page, 10) - props.pageSelected) === 1 ?
 
-          page - 1 > 1 && props.pageSelected - page === 1 ?
+          parseInt(page, 10) - 1 > 1 && props.pageSelected - parseInt(page, 10) === 1 ?
 
           (
             <Fragment key = {`page #${page}`}>
             <span>...</span>
             <button onClick = {(event) => {
-              props.setPageSelected(page);
-              }
+              props.setPageSelected(parseInt(page, 10));
+            }
             }>{page}</button>
             </Fragment>
-          ) : array[array.length - 1] - page > 1 && props.pageSelected - page !== 1 ?
+          ) : parseInt(array[array.length - 1], 10) - parseInt(page, 10) > 1 && props.pageSelected - parseInt(page, 10) !== 1 ?
 
             (
               <Fragment key = {`page #${page}`}>          
               <button key = {`page #${page}`} onClick = {(event) => {
-                props.setPageSelected(page);
-                }
+                props.setPageSelected(parseInt(page, 10));
+              }
               }>{page}</button>
               <span>...</span>
               </Fragment>
@@ -42,8 +42,8 @@ function Pagination(props) {
 
             (
               <button key = {`page #${page}`} onClick = {(event) => {
-                props.setPageSelected(page);
-                }
+                props.setPageSelected(parseInt(page, 10));
+              }
               }>{page}</button>
 
         ) : [];

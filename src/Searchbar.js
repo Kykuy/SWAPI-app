@@ -32,7 +32,7 @@ function Searchbar(props) {
           onChange = {(event) => {
             props.setFetchUrl(`https://swapi.py4e.com/api/${event.target.value}/`);
             props.setSelectedDataType(event.target.value);
-            props.setPageSelected('1');
+            props.setPageSelected(1);
             props.setIsLoading(true);
           }
           }></input>
