@@ -12,7 +12,7 @@ function Pagination(props) {
         return parseInt(page, 10) === 1 || parseInt(page, 10) === props.pageSelected || parseInt(page, 10) === parseInt(array[array.length - 1], 10) ?
         
         (
-          <button key = {`page #${page}`} onClick = {(event) => {
+          <button disabled = {parseInt(page, 10) === props.pageSelected} key = {`page #${page}`} onClick = {(event) => {
             props.setPageSelected(parseInt(page, 10));
           }
           }>{page}</button>
