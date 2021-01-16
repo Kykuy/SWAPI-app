@@ -1,13 +1,13 @@
 import React, {Fragment} from 'react';
 
 function Pagination(props) {
-  return (
-    <section>
-    <button onClick = {(event) => {
-      if (props.pageSelected > 1) {
-        props.setPageSelected(prevPageSelected => prevPageSelected - 1);
-      }
-    }}>&lt;</button>    
+  return (    
+    <section>      
+      <button onClick = {(event) => {
+        if (props.pageSelected > 1) {
+          props.setPageSelected(prevPageSelected => prevPageSelected - 1);
+        }
+      }}>&lt;</button>    
       {Object.keys(props.pages).flatMap((page, index, array) => {
         return parseInt(page, 10) === 1 || parseInt(page, 10) === props.pageSelected || parseInt(page, 10) === parseInt(array[array.length - 1], 10) ?
         
@@ -53,6 +53,7 @@ function Pagination(props) {
           props.setPageSelected(prevPageSelected => prevPageSelected + 1);
         }
       }}>&gt;</button>
+      <p>Showing {`${1 + (props.pageSelected - 1) * 10}`}-{`${(props.pageSelected - 1) * 10 + props.pages[props.pageSelected].length}`} of {`${props.data.length}`} items</p>
     </section>    
   )
 }

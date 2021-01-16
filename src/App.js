@@ -98,7 +98,7 @@ function App() {
       </header>
       <main>
         <Searchbar selected = {selectedDataType} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} setSearchInput = {setSearchInput}/>
-        <Pagination pages = {pages} pageSelected = {pageSelected} setPageSelected = {setPageSelected} />
+        <Pagination data = {data} pages = {pages} pageSelected = {pageSelected} setPageSelected = {setPageSelected} />
         <Output data = {data} selected = {selectedDataType} searchInput = {searchInput} pages = {pages} pageSelected = {pageSelected} />
       </main>
       </>
