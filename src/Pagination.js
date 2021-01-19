@@ -71,7 +71,16 @@ function Pagination(props) {
         props.setPageSelected(pageToJumpTo);
       }}>Jump</button>
 
-      <p>Showing {`${1 + (props.pageSelected - 1) * 10}`}-{`${(props.pageSelected - 1) * 10 + props.pages[props.pageSelected].length}`} of {`${props.data.length}`} items</p>
+      <label htmlFor = 'itemsPerPage'>Maximum items displayed per page:</label>
+      <select id = 'itemsPerPage' name = 'itemsPerPage' value = {props.itemsPerPage} onChange = {(event) => {
+        props.setItemsPerPage(parseInt(event.target.value, 10))
+      }}>
+        <option value = '10'>10</option>
+        <option value = '20'>20</option>
+        <option value = '30'>30</option>
+      </select>
+
+      <p>Showing {`${1 + (props.pageSelected - 1) * props.itemsPerPage}`}-{`${(props.pageSelected - 1) * props.itemsPerPage + props.pages[props.pageSelected]?.length}`} of {`${props.data?.length}`} items</p>
     </section>    
   )
 }
