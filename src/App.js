@@ -12,6 +12,7 @@ function App() {
   const [fetchUrl, setFetchUrl] = useState(`https://swapi.py4e.com/api/${selectedDataType}/`);
   const [searchInput, setSearchInput] = useState('');  
   const [pages, setPages] = useState({});
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const [pageSelected, setPageSelected] = useState(1);
   // useEffect(() => {
   //   fetch(fetchUrl)
@@ -48,39 +49,50 @@ function App() {
   // }, [fetchUrl, data.count]); 
 
   useEffect(() => {
+    async function getData(url) {    
+      try {
+        let total = [];
+  
+        let response = await fetch(url);
+        let data = await response.json();    
+        total = total.concat(data.results);
+  
+        while(data.next) {      
+          if (data.next === null) {
+            break;
+          } else {
+            data = await fetch(data.next);
+            data = await data.json();        
+            total = total.concat(data.results);
+          }        
+        }
+        setData(total);
+      } catch(error) {
+        setError(error);
+      }  
+    }
+
     getData(fetchUrl);
   }, [fetchUrl])
 
-  async function getData(url) {    
-    try {
-      let total = [];
+  useEffect(() => {
+    function createPages(data, itemsPerPage) {
       let currPage = 1;
       let pagesDictionary = {};
+      let dataToPaginate = Array.from(data);
 
-      let response = await fetch(url);
-      let data = await response.json();    
-      total = total.concat(data.results);    
-      pagesDictionary[currPage] = data.results;
-      currPage++;
-
-      while(data.next) {      
-        if (data.next === null) {
-          break;
-        } else {
-          data = await fetch(data.next);
-          data = await data.json();        
-          total = total.concat(data.results);
-          pagesDictionary[currPage] = data.results;
-          currPage++;
-        }        
+      while(dataToPaginate.length) {      
+        let page = dataToPaginate.splice(0, itemsPerPage);
+        pagesDictionary[currPage] = page;
+        currPage++;    
       }
-      setData(total);
+      
       setPages(pagesDictionary);
       setIsLoading(false);
-    } catch(error) {
-      setError(error);
-    }  
-  }
+    }
+
+    createPages(data, itemsPerPage);
+  }, [data, itemsPerPage])  
 
   //console.log(data);
   //console.log('all', all);
@@ -98,7 +110,7 @@ function App() {
       </header>
       <main>
         <Searchbar selected = {selectedDataType} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} setSearchInput = {setSearchInput}/>
-        <Pagination data = {data} pages = {pages} pageSelected = {pageSelected} setPageSelected = {setPageSelected} />
+        <Pagination data = {data} pages = {pages} pageSelected = {pageSelected} setPageSelected = {setPageSelected} itemsPerPage = {itemsPerPage} setItemsPerPage = {setItemsPerPage}/>
         <Output data = {data} selected = {selectedDataType} searchInput = {searchInput} pages = {pages} pageSelected = {pageSelected} />
       </main>
       </>

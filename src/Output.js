@@ -58,7 +58,7 @@ const Output = (props) => {
   //  data.filter( item => item.name.toLowerCase().includes( props.searchInput.toLowerCase() ) ) :
   //  data.filter( item => item.title.toLowerCase().includes( props.searchInput.toLowerCase() ) );
 
-  return props.selected !== 'films' ? (
+  return props?.selected !== 'films' ? (
     <>         
     <section>
       {/* {finalOutput.map(item => {
@@ -68,7 +68,7 @@ const Output = (props) => {
           </article>
         );
       })} */}
-      {props.pages[props.pageSelected].map(item => {
+      {props.pages[props.pageSelected]?.map(item => {
         return (
           <article key = {item.url}>
             <h1>Name: {item.name}</h1>
@@ -88,7 +88,7 @@ const Output = (props) => {
           </article>
         );
       })} */}
-      {props.pages[props.pageSelected].map(item => {
+      {props.pages[props.pageSelected]?.map(item => {
         return (
           <article key = {item.url}>
             <h1>Title: {item.title}</h1>
