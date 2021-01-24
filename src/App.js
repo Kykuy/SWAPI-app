@@ -111,7 +111,7 @@ function App() {
       <main>
         <Searchbar selected = {selectedDataType} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} setSearchInput = {setSearchInput}/>
         <Pagination data = {data} pages = {pages} pageSelected = {pageSelected} setPageSelected = {setPageSelected} itemsPerPage = {itemsPerPage} setItemsPerPage = {setItemsPerPage}/>
-        <Output data = {data} selected = {selectedDataType} searchInput = {searchInput} pages = {pages} pageSelected = {pageSelected} />
+        <Output data = {data} selectedDataType = {selectedDataType} searchInput = {searchInput} pages = {pages} pageSelected = {pageSelected} />
       </main>
       </>
     );

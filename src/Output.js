@@ -1,7 +1,17 @@
 import React, { useState, useEffect, Fragment } from 'react';
+import Modal from './Modal.js';
 
 const Output = (props) => { 
-  console.log('output props', props);
+  const [showModal, setShowModal] = useState(false);
+  const [modalData, setModalData] = useState({});
+
+  const modal = showModal ? (
+    <Modal setShowModal = {setShowModal} modalData = {modalData}>
+      <p>{modalData.name}</p>
+      <button onClick = {(event) => setShowModal(false)}>Hide modal</button>
+    </Modal>
+  ) : null;
+  // console.log('output props', props);
   //let filtered = props.data.filter(item => item !== undefined);
   //console.log('filtered data', filtered);
   
@@ -58,7 +68,7 @@ const Output = (props) => {
   //  data.filter( item => item.name.toLowerCase().includes( props.searchInput.toLowerCase() ) ) :
   //  data.filter( item => item.title.toLowerCase().includes( props.searchInput.toLowerCase() ) );
 
-  return props?.selected !== 'films' ? (
+  return props?.selectedDataType !== 'films' ? (
     <>         
     <section>
       {/* {finalOutput.map(item => {
@@ -71,11 +81,15 @@ const Output = (props) => {
       {props.pages[props.pageSelected]?.map(item => {
         return (
           <article key = {item.url}>
-            <h1>Name: {item.name}</h1>
+            <h1 onClick = {(event) => {
+              setShowModal(prevShowModal => !prevShowModal);
+              setModalData(item);
+            }}>Name: {item.name}</h1>
           </article>
         );
       })}
     </section>
+    {modal}
     </>    
   ) :
   ( 
@@ -96,6 +110,7 @@ const Output = (props) => {
         );
       })}
     </section>
+    {modal}
     </>    
   );
 }
