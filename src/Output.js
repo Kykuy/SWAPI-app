@@ -7,8 +7,10 @@ const Output = (props) => {
 
   const modal = showModal ? (
     <Modal setShowModal = {setShowModal} modalData = {modalData}>
-      <p>{modalData.name}</p>
-      <button onClick = {(event) => setShowModal(false)}>Hide modal</button>
+      <article className = 'modal'>
+        <p>{modalData.name}</p>
+        <button onClick = {(event) => setShowModal(false)}>Hide modal</button>
+      </article>
     </Modal>
   ) : null;
   // console.log('output props', props);
