@@ -4,15 +4,49 @@ import Modal from './Modal.js';
 const Output = (props) => { 
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState({});
+  const [isModalLoading, setModalLoaging] = useState(true);
 
-  const modal = showModal ? (
-    <Modal setShowModal = {setShowModal} modalData = {modalData}>
-      <article className = 'modal'>
-        <p>{modalData.name}</p>
-        <button onClick = {(event) => setShowModal(false)}>Hide modal</button>
-      </article>
-    </Modal>
-  ) : null;
+  // const modal = showModal ? isModalLoading ? (
+  // <Modal>
+  //   <article className = 'modal'>
+  //     <p>Loading...</p>
+  //     <button onClick = {(event) => setShowModal(false)}>Hide modal</button>
+  //   </article>
+  // </Modal>
+  // ) :
+  // (
+  //   <Modal setShowModal = {setShowModal} modalData = {modalData}>
+  //     <article className = 'modal'>
+  //       <p>{modalData.name || modalData.title}</p>
+  //       <button onClick = {(event) => setShowModal(false)}>Hide modal</button>
+  //     </article>
+  //   </Modal>
+  // ) : null;
+
+  const modal = showModal ? 
+    (
+      <Modal setShowModal = {setShowModal} modalData = {modalData}>
+        <article className = 'modal'>
+          {/* <p>{modalData.name || modalData.title}</p> */}
+          {Object.entries(modalData)
+            .filter(([key, value]) => key !== 'created' && key !== 'edited' && key !== 'url')
+            .map(([key, value]) => {
+              return (
+                <p>{makeKeyReadable(key)}: {value}</p>
+              )
+          })}
+          <button onClick = {(event) => setShowModal(false)}>Hide modal</button>
+        </article>
+      </Modal>
+    ) : null;
+
+  function makeKeyReadable(keyString) {
+    let result = keyString;
+
+    result = `${result[0].toUpperCase()}${result.slice(1)}`;
+    result = result.replace('_', ' ');
+    return result;
+  }
   // console.log('output props', props);
   //let filtered = props.data.filter(item => item !== undefined);
   //console.log('filtered data', filtered);
@@ -107,7 +141,10 @@ const Output = (props) => {
       {props.pages[props.pageSelected]?.map(item => {
         return (
           <article key = {item.url}>
-            <h1>Title: {item.title}</h1>
+          <h1 onClick = {(event) => {
+            setShowModal(prevShowModal => !prevShowModal);
+            setModalData(item);
+          }}>Title: {item.title}</h1>
           </article>
         );
       })}
