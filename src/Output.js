@@ -4,7 +4,7 @@ import Modal from './Modal.js';
 const Output = (props) => { 
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState({});
-  const [isModalLoading, setModalLoaging] = useState(true);
+  const [isModalLoading, setIsModalLoaging] = useState(true);
 
   // const modal = showModal ? isModalLoading ? (
   // <Modal>
@@ -23,30 +23,11 @@ const Output = (props) => {
   //   </Modal>
   // ) : null;
 
-  const modal = showModal ? 
+    const modal = showModal ? 
     (
-      <Modal setShowModal = {setShowModal} modalData = {modalData}>
-        <article className = 'modal'>
-          {/* <p>{modalData.name || modalData.title}</p> */}
-          {Object.entries(modalData)
-            .filter(([key, value]) => key !== 'created' && key !== 'edited' && key !== 'url')
-            .map(([key, value]) => {
-              return (
-                <p>{makeKeyReadable(key)}: {value}</p>
-              )
-          })}
-          <button onClick = {(event) => setShowModal(false)}>Hide modal</button>
-        </article>
-      </Modal>
-    ) : null;
-
-  function makeKeyReadable(keyString) {
-    let result = keyString;
-
-    result = `${result[0].toUpperCase()}${result.slice(1)}`;
-    result = result.replace('_', ' ');
-    return result;
-  }
+      <Modal setShowModal = {setShowModal} modalData = {modalData} setModalData = {setModalData} setIsModalLoaging = {setIsModalLoaging}/>
+    ) : null; 
+    
   // console.log('output props', props);
   //let filtered = props.data.filter(item => item !== undefined);
   //console.log('filtered data', filtered);
