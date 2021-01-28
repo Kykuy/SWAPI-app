@@ -47,16 +47,17 @@ function Modal(props) {
     return result;
   }
 
-  return ReactDOM.createPortal(<article className = 'modal'>          
-  {Object.entries(modalDataToDisplay)
-    .filter(([key, value]) => key !== 'created' && key !== 'edited' && key !== 'url')
-    .map(([key, value]) => {
-      return (
-        <p>{makeKeyReadable(key)}: {value}</p>
-      )}
-    )}
-  <button onClick = {(event) => props.setShowModal(false)}>Hide modal</button>
-</article>, rootElementRef.current);
+  return ReactDOM.createPortal(
+    <article className = 'modal'>          
+      {Object.entries(modalDataToDisplay)
+        .filter(([key, value]) => key !== 'created' && key !== 'edited' && key !== 'url')
+        .map(([key, value]) => {
+          return (
+            <p>{makeKeyReadable(key)}: {value}</p>
+          )}
+        )}
+      <button onClick = {(event) => props.setShowModal(false)}>Hide modal</button>
+    </article>, rootElementRef.current);
 }
 
 export default Modal;
