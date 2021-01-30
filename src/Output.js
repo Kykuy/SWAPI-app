@@ -3,8 +3,7 @@ import Modal from './Modal.js';
 
 const Output = (props) => { 
   const [showModal, setShowModal] = useState(false);
-  const [modalData, setModalData] = useState({});
-  const [isModalLoading, setIsModalLoaging] = useState(true);
+  const [modalData, setModalData] = useState({});  
 
   // const modal = showModal ? isModalLoading ? (
   // <Modal>
@@ -25,7 +24,7 @@ const Output = (props) => {
 
     const modal = showModal ? 
     (
-      <Modal setShowModal = {setShowModal} modalData = {modalData} setModalData = {setModalData} setIsModalLoaging = {setIsModalLoaging}/>
+      <Modal setShowModal = {setShowModal} modalData = {modalData} setModalData = {setModalData} />
     ) : null; 
     
   // console.log('output props', props);

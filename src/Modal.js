@@ -4,8 +4,9 @@ import ReactDOM from 'react-dom';
 function Modal(props) {  
   const rootElementRef = useRef(document.createElement('article'));
   const [modalDataToDisplay, setModalDataToDisplay] = useState({});
-  
-  const {setIsModalLoaging, modalData} = props;  
+  const [isModalLoading, setIsModalLoading] = useState(true);
+
+  const {modalData} = props;  
 
   useEffect(() => {
     let rootElement = rootElementRef.current;
@@ -36,11 +37,11 @@ function Modal(props) {
         }
       }));              
       setModalDataToDisplay(Object.fromEntries(data));      
-      setIsModalLoaging(false);
+      setIsModalLoading(false);
     }
 
     getDataForModal(modalData);
-  }, [modalData, setIsModalLoaging]);
+  }, [modalData, setIsModalLoading]);
   // console.log('modalDataToDisplay', modalDataToDisplay);
 
   function makeKeyReadable(keyString) {
@@ -51,17 +52,19 @@ function Modal(props) {
     return result;
   }
 
-  return ReactDOM.createPortal(
-    <article className = 'modal'>          
-      {Object.entries(modalDataToDisplay)
-        .filter(([key, value]) => key !== 'created' && key !== 'edited' && key !== 'url')
-        .map(([key, value]) => {
-          return (
-            <p>{makeKeyReadable(key)}: {value}</p>
-          )}
+  const modal = isModalLoading ? <p className = 'modal'>Loading...</p> :
+  <article className = 'modal'>          
+    {Object.entries(modalDataToDisplay)
+      .filter(([key, value]) => key !== 'created' && key !== 'edited' && key !== 'url')
+      .map(([key, value]) => {
+        return (
+          <p>{makeKeyReadable(key)}: {value}</p>
         )}
-      <button onClick = {(event) => props.setShowModal(false)}>Hide modal</button>
-    </article>, rootElementRef.current);
+      )}
+    <button onClick = {(event) => props.setShowModal(false)}>Hide modal</button>
+  </article>;
+
+  return ReactDOM.createPortal(modal, rootElementRef.current);
 }
 
 export default Modal;
