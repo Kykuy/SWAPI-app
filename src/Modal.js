@@ -27,6 +27,10 @@ function Modal(props) {
             return result.name || result.title;
           }));
           return [key, fetchedData.join(", ")];
+        } else if (key === 'homeworld') {
+          const response = await fetch(value);
+          const result = await response.json();          
+          return [key, result.name];
         } else {
           return [key, value];
         }
