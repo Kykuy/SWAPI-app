@@ -55,10 +55,10 @@ function Modal(props) {
   const modal = isModalLoading ? <p className = 'modal'>Loading...</p> :
   <article className = 'modal'>          
     {Object.entries(modalDataToDisplay)
-      .filter(([key, value]) => key !== 'created' && key !== 'edited' && key !== 'url')
+      .filter(([key, value]) => (key !== 'created' && key !== 'edited' && key !== 'url') /*&& value?.length > 0*/)
       .map(([key, value]) => {
         return (
-          <p>{makeKeyReadable(key)}: {value}</p>
+          <p>{makeKeyReadable(key)}: {value?.length > 0 ? value : 'none'}</p>
         )}
       )}
     <button onClick = {(event) => props.setShowModal(false)}>Hide modal</button>
