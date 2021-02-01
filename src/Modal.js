@@ -42,7 +42,7 @@ function Modal(props) {
 
     getDataForModal(modalData);
   }, [modalData, setIsModalLoading]);
-  // console.log('modalDataToDisplay', modalDataToDisplay);
+  console.log('modalDataToDisplay', modalDataToDisplay);
 
   function makeKeyReadable(keyString) {
     let result = keyString;
@@ -57,9 +57,14 @@ function Modal(props) {
     {Object.entries(modalDataToDisplay)
       .filter(([key, value]) => (key !== 'created' && key !== 'edited' && key !== 'url') /*&& value?.length > 0*/)
       .map(([key, value]) => {
-        return (
+        return key === 'mass' ? (
+          <p>{makeKeyReadable(key)}: {value?.length > 0 ? value : 'none'} kg</p>
+        ) : key === 'height' ? (
+          <p>{makeKeyReadable(key)}: {value?.length > 0 ? value : 'none'} cm</p>
+        ) : (
           <p>{makeKeyReadable(key)}: {value?.length > 0 ? value : 'none'}</p>
-        )}
+        )
+      }
       )}
     <button onClick = {(event) => props.setShowModal(false)}>Hide modal</button>
   </article>;
