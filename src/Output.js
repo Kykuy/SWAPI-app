@@ -24,7 +24,7 @@ const Output = (props) => {
 
     const modal = showModal ? 
     (
-      <Modal setShowModal = {setShowModal} modalData = {modalData} setModalData = {setModalData} />
+      <Modal setShowModal = {setShowModal} modalData = {modalData} setModalData = {setModalData} selectedDataType = {props.selectedDataType}/>
     ) : null; 
     
   // console.log('output props', props);
