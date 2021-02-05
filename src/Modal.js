@@ -110,7 +110,7 @@ function Modal(props) {
             return key === 'average_lifespan' ? (
               <p key = {key}>{makeKeyReadable(key)}: {value?.length > 0 ? value : 'none'} year(s)</p>
             ) : key === 'average_height' ? (
-              <p key = {key}>{makeKeyReadable(key)}: {value?.length > 0 ? value : 'none'} m</p>
+              <p key = {key}>{makeKeyReadable(key)}: {value?.length > 0 ? value : 'none'} cm</p>
             ) : (
               <p key = {key}>{makeKeyReadable(key)}: {value?.length > 0 ? value : 'none'}</p>
             );
