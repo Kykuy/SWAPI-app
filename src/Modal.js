@@ -48,7 +48,7 @@ function Modal(props) {
     let result = keyString;
 
     result = `${result[0].toUpperCase()}${result.slice(1)}`;
-    result = result.replace('_', ' ');
+    result = result.replace(/_/g, ' ');
     return result;
   }
 
