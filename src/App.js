@@ -6,11 +6,12 @@ import Output from './Output.js';
 
 function App() {
   const [data, setData] = useState([]);
+  const [searchData, setSearchData] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);   
+  const [isSearching, setIsSearching] = useState(false);
   const [selectedDataType, setSelectedDataType] = useState('people');
-  const [fetchUrl, setFetchUrl] = useState(`https://swapi.py4e.com/api/${selectedDataType}/`);
-  const [searchInput, setSearchInput] = useState('');  
+  const [fetchUrl, setFetchUrl] = useState(`https://swapi.py4e.com/api/${selectedDataType}/`);  
   const [pages, setPages] = useState({});
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [pageSelected, setPageSelected] = useState(1);
@@ -67,6 +68,7 @@ function App() {
           }        
         }
         setData(total);
+        setSearchData(total);
       } catch(error) {
         setError(error);
       }  
@@ -92,7 +94,9 @@ function App() {
     }
 
     createPages(data, itemsPerPage);
-  }, [data, itemsPerPage])  
+  }, [data, itemsPerPage])
+  
+  console.log('data', data);
 
   //console.log(data);
   //console.log('all', all);
@@ -109,9 +113,9 @@ function App() {
         <h1>Starting...</h1>
       </header>
       <main>
-        <Searchbar selected = {selectedDataType} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} setSearchInput = {setSearchInput}/>
+        <Searchbar searchData = {searchData} setData = {setData} isSearching = {isSearching} setIsSearching = {setIsSearching} selected = {selectedDataType} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} />
         <Pagination data = {data} pages = {pages} pageSelected = {pageSelected} setPageSelected = {setPageSelected} itemsPerPage = {itemsPerPage} setItemsPerPage = {setItemsPerPage}/>
-        <Output data = {data} selectedDataType = {selectedDataType} searchInput = {searchInput} pages = {pages} pageSelected = {pageSelected} />
+        <Output data = {data} selectedDataType = {selectedDataType}  pages = {pages} pageSelected = {pageSelected} />
       </main>
       </>
     );

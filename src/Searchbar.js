@@ -1,8 +1,20 @@
-import React, { Fragment } from 'react';
+import React, {useState, useEffect, Fragment } from 'react';
 
 function Searchbar(props) {
-  let datatypes = ['People', 'Vehicles', 'Starships', 'Planets', 'Species', 'Films'];
-  return (    
+  const [searchInput, setSearchInput] = useState('');  
+
+  const datatypes = ['People', 'Vehicles', 'Starships', 'Planets', 'Species', 'Films'];
+
+  const searchData = Array.from(props.searchData);
+  // console.log('searchData', searchData);
+
+  const cancelSearch = props.isSearching ? <button onClick = {(event) => {
+    props.setIsSearching(false);
+    props.setData(props.searchData);
+  }}>Cancel search</button> : null;
+  
+  return (  
+    <>  
     <form>
 
       <fieldset>
@@ -34,6 +46,7 @@ function Searchbar(props) {
             props.setSelectedDataType(event.target.value);
             props.setPageSelected(1);
             props.setIsLoading(true);
+            setSearchInput('');
           }
           }></input>
           <label htmlFor = {datatype.toLowerCase()}>{datatype}</label>
@@ -41,11 +54,16 @@ function Searchbar(props) {
         })}
 
       </fieldset>
-      
-      <label htmlFor = 'search-input'>Search for Star Wars Data!</label>
-      <input type = 'search' id = 'search-input' placeholder = 'find data. SW data.' onChange = {(event) => props.setSearchInput(event.target.value)}></input>
-      
     </form>
+
+    <label htmlFor = 'search-input'>Search for Star Wars Data!</label>
+    <input type = 'search' id = 'search-input' placeholder = 'find data. SW data.' onChange = {(event) => setSearchInput(event.target.value)}></input>
+    <button onClick = {(event) => {
+      props.setData(prevData => prevData.filter(item => item.name.startsWith(searchInput)));
+      props.setIsSearching(true);
+    }}>Start search</button>
+    {cancelSearch}
+    </>
     
   );
 }
