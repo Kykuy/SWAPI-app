@@ -60,11 +60,11 @@ function Searchbar(props) {
     <input type = 'search' id = 'search-input' placeholder = 'find data. SW data.' onChange = {(event) => setSearchInput(event.target.value)}></input>
     <button onClick = {(event) => {
       props.setData( searchData
-      .filter(item => item.name.startsWith(searchInput) || item.name.includes(searchInput))
+      .filter(item => item.name.toLowerCase().startsWith(searchInput.toLowerCase()) || item.name.toLowerCase().includes(searchInput.toLowerCase()))
       .sort((a, b) => {
-        if (a.name.startsWith(searchInput) && !b.name.startsWith(searchInput)) {
+        if (a.name.toLowerCase().startsWith(searchInput.toLowerCase()) && !b.name.toLowerCase().startsWith(searchInput.toLowerCase())) {
           return -1;
-        } else if (a.name.startsWith(searchInput) && b.name.startsWith(searchInput)) {
+        } else if (a.name.toLowerCase().startsWith(searchInput.toLowerCase()) && b.name.toLowerCase().startsWith(searchInput.toLowerCase())) {
           return 0;
         } else {
           return 1;
