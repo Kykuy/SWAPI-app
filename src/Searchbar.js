@@ -5,12 +5,12 @@ function Searchbar(props) {
 
   const datatypes = ['People', 'Vehicles', 'Starships', 'Planets', 'Species', 'Films'];
 
-  const searchData = {props};
+  const searchData = Array.from(props.searchData);
   // console.log('searchData', searchData);
 
   const cancelSearch = props.isSearching ? <button onClick = {(event) => {
     props.setIsSearching(false);
-    props.setData(props.searchData);
+    props.setData(searchData);
   }}>Cancel search</button> : null;
   
   return (  
@@ -59,7 +59,7 @@ function Searchbar(props) {
     <label htmlFor = 'search-input'>Search for Star Wars Data!</label>
     <input type = 'search' id = 'search-input' placeholder = 'find data. SW data.' onChange = {(event) => setSearchInput(event.target.value)}></input>
     <button onClick = {(event) => {
-      props.setData( prevData => prevData
+      props.setData( searchData
       .filter(item => item.name.startsWith(searchInput) || item.name.includes(searchInput))
       .sort((a, b) => {
         if (a.name.startsWith(searchInput) && !b.name.startsWith(searchInput)) {
