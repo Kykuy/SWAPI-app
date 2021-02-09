@@ -70,6 +70,7 @@ function Searchbar(props) {
           return 1;
         }
       }) );
+      props.setPageSelected(1);
       props.setIsSearching(true);
     }}>Start search</button>
     {cancelSearch}
