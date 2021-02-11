@@ -11,6 +11,7 @@ function Searchbar(props) {
   const cancelSearch = props.isSearching ? <button onClick = {(event) => {
     props.setIsSearching(false);
     props.setData(searchData);
+    setSearchInput('');
   }}>Cancel search</button> : null;
   
   return (  
