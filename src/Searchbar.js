@@ -6,6 +6,19 @@ function Searchbar(props) {
   const datatypes = ['People', 'Vehicles', 'Starships', 'Planets', 'Species', 'Films'];
 
   const searchData = Array.from(props.searchData);
+
+  const datalist = searchInput.length >= 2 && searchData
+  .filter(item => item.name.toLowerCase().startsWith(searchInput.toLowerCase()) || item.name.toLowerCase().includes(searchInput.toLowerCase()))
+  .length > 0 ?
+   <datalist id = 'searchList'>
+    {searchData
+    .filter(item => item.name.toLowerCase().startsWith(searchInput.toLowerCase()) || item.name.toLowerCase().includes(searchInput.toLowerCase()))
+    .map(item => {
+      return <option value = {item.name} />
+    })
+    }
+   </datalist>
+  : null;
   // console.log('searchData', searchData);
 
   const cancelSearch = props.isSearching ? <button onClick = {(event) => {
@@ -58,7 +71,8 @@ function Searchbar(props) {
     </form>
 
     <label htmlFor = 'search-input'>Search for Star Wars Data!</label>
-    <input type = 'search' id = 'search-input' placeholder = 'find data. SW data.' onChange = {(event) => setSearchInput(event.target.value)}></input>
+    <input list = 'searchList' type = 'search' id = 'search-input' placeholder = 'find data. SW data.' onChange = {(event) => setSearchInput(event.target.value)}></input>
+    {datalist}
     <button onClick = {(event) => {
       props.setData( searchData
       .filter(item => item.name.toLowerCase().startsWith(searchInput.toLowerCase()) || item.name.toLowerCase().includes(searchInput.toLowerCase()))
