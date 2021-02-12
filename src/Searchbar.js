@@ -60,6 +60,7 @@ function Searchbar(props) {
             props.setSelectedDataType(event.target.value);
             props.setPageSelected(1);
             props.setIsLoading(true);
+            props.setIsSearching(false);
             setSearchInput('');
           }
           }></input>
