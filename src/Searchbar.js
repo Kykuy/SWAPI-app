@@ -14,7 +14,7 @@ function Searchbar(props) {
     {searchData
     .filter(item => item.name.toLowerCase().startsWith(searchInput.toLowerCase()) || item.name.toLowerCase().includes(searchInput.toLowerCase()))
     .map(item => {
-      return <option value = {item.name} />
+      return <option key = {item.url} value = {item.name} />
     })
     }
    </datalist>
