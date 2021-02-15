@@ -5,7 +5,7 @@ function Searchbar(props) {
 
   const datatypes = ['People', 'Vehicles', 'Starships', 'Planets', 'Species', 'Films'];
 
-  const searchData = Array.from(props.searchData);
+  const {searchData} = props;
 
   const datalist = searchInput.length >= 2 && searchData
   .filter(item => item.name.toLowerCase().startsWith(searchInput.toLowerCase()) || item.name.toLowerCase().includes(searchInput.toLowerCase()))
