@@ -27,6 +27,22 @@ function Searchbar(props) {
     setSearchInput('');
   }}>Cancel search</button> : null;
   
+function startSearch() {
+  props.setData( searchData
+    .filter(item => item.name.toLowerCase().startsWith(searchInput.toLowerCase()) || item.name.toLowerCase().includes(searchInput.toLowerCase()))
+    .sort( (a, b) => {
+      if (a.name.toLowerCase().startsWith(searchInput.toLowerCase()) && !b.name.toLowerCase().startsWith(searchInput.toLowerCase())) {
+        return -1;
+      } else if (a.name.toLowerCase().startsWith(searchInput.toLowerCase()) && b.name.toLowerCase().startsWith(searchInput.toLowerCase())) {
+        return 0;
+      } else {
+        return 1;
+      }
+  }) );
+  props.setPageSelected(1);
+  props.setIsSearching(true);
+}
+
   return (  
     <>  
     <form>
@@ -72,22 +88,14 @@ function Searchbar(props) {
     </form>
 
     <label htmlFor = 'search-input'>Search for Star Wars Data!</label>
-    <input list = 'searchList' type = 'search' id = 'search-input' size = '25' disabled = {props.selected === 'films'} placeholder = {props.selected === 'films' ? 'Searching is disabled for films' : 'find data. SW data.'} onChange = {(event) => setSearchInput(event.target.value)}></input>
+    <input list = 'searchList' type = 'search' id = 'search-input' size = '25' disabled = {props.selected === 'films'}
+      placeholder = {props.selected === 'films' ? 'Searching is disabled for films' : 'find data. SW data.'}
+      onChange = {(event) => setSearchInput(event.target.value)}
+      onKeyDown = {(event) => event.key === 'Enter' ? startSearch() : null}
+    ></input>
     {datalist}
     <button disabled = {props.selected === 'films'} onClick = {(event) => {
-      props.setData( searchData
-      .filter(item => item.name.toLowerCase().startsWith(searchInput.toLowerCase()) || item.name.toLowerCase().includes(searchInput.toLowerCase()))
-      .sort((a, b) => {
-        if (a.name.toLowerCase().startsWith(searchInput.toLowerCase()) && !b.name.toLowerCase().startsWith(searchInput.toLowerCase())) {
-          return -1;
-        } else if (a.name.toLowerCase().startsWith(searchInput.toLowerCase()) && b.name.toLowerCase().startsWith(searchInput.toLowerCase())) {
-          return 0;
-        } else {
-          return 1;
-        }
-      }) );
-      props.setPageSelected(1);
-      props.setIsSearching(true);
+      startSearch();
     }}>Start search</button>
     {cancelSearch}
     </>
