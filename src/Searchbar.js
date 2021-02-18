@@ -88,7 +88,7 @@ function startSearch() {
     </form>
 
     <label htmlFor = 'search-input'>Search for Star Wars Data!</label>
-    <input list = 'searchList' type = 'search' id = 'search-input' size = '25' disabled = {props.selected === 'films'}
+    <input list = 'searchList' type = 'search' value = {searchInput} id = 'search-input' size = '25' disabled = {props.selected === 'films'}
       placeholder = {props.selected === 'films' ? 'Searching is disabled for films' : 'find data. SW data.'}
       onChange = {(event) => setSearchInput(event.target.value)}
       onKeyDown = {(event) => event.key === 'Enter' ? startSearch() : null}
