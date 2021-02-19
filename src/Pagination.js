@@ -69,7 +69,7 @@ function Pagination(props) {
       }
       setPageToJumpTo(parseInt(event.target.value, 10));
     }}></input>
-    <button onClick = {(event) => {
+    <button disabled = {pageToJumpTo < 1} onClick = {(event) => {
       props.setPageSelected(pageToJumpTo);
     }}>Jump</button>
 
