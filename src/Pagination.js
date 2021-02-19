@@ -68,10 +68,17 @@ function Pagination(props) {
         event.target.value = event.target.max;
       }
       setPageToJumpTo(parseInt(event.target.value, 10));
-    }}></input>
+    }}
+      onKeyPress = {(event) => {
+        if (event.key === 'Enter') {
+          props.setPageSelected(pageToJumpTo);
+        }
+      }}
+    ></input>
     <button disabled = {pageToJumpTo < 1} onClick = {(event) => {
       props.setPageSelected(pageToJumpTo);
-    }}>Jump</button>
+    }}
+    >Jump</button>
 
     <label htmlFor = 'itemsPerPage'>Maximum items displayed per page:</label>
     <select id = 'itemsPerPage' name = 'itemsPerPage' value = {props.itemsPerPage} onChange = {(event) => {
