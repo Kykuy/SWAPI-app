@@ -69,6 +69,7 @@ function App() {
         }
         setData(total);
         setSearchData(total);
+        setIsLoading(false);
       } catch(error) {
         setError(error);
       }  
@@ -89,8 +90,7 @@ function App() {
         currPage++;    
       }
       
-      setPages(pagesDictionary);
-      setIsLoading(false);
+      setPages(pagesDictionary);      
     }
 
     createPages(data, itemsPerPage);
