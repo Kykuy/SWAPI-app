@@ -1,0 +1,15 @@
+.pagination button {
+  display: inline-block;
+  padding: 3px 6px;
+  background-color: #7a8288; 
+  color: #c8c8c8;
+  font-size: 1.25rem;
+  border-width: 5px;
+  border-color: #62686d;
+  box-shadow: none;
+  border-style: solid; 
+}
+
+.pagination button:hover {
+  background-color: #62686d;
+}

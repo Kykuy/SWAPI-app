@@ -6,7 +6,7 @@ function Pagination(props) {
   const resultsNumber = props.isSearching && props.data.length < 1 ? <p>No matches found</p> : <p>Showing {`${1 + (props.pageSelected - 1) * props.itemsPerPage}`}-{`${(props.pageSelected - 1) * props.itemsPerPage + props.pages[props.pageSelected]?.length}`} of {`${props.data?.length}`} items</p>;
 
   const pages = props.isSearching && props.data.length < 1 ? <>{resultsNumber}</> :
-   <section>      
+   <section className = 'pagination'>      
     <button onClick = {(event) => {
       if (props.pageSelected > 1) {
         props.setPageSelected(prevPageSelected => prevPageSelected - 1);

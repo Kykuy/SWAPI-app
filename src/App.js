@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
+import './Pagination.css';
 import Searchbar from "./Searchbar.js";
 import Pagination from "./Pagination.js";
 import Output from './Output.js';
