@@ -41,6 +41,7 @@ function startSearch() {
   }) );
   props.setPageSelected(1);
   props.setIsSearching(true);
+  setSearchInput('');
 }
 
   return (  
