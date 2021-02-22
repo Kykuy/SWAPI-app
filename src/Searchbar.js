@@ -24,6 +24,7 @@ function Searchbar(props) {
   const cancelSearch = props.isSearching ? <button onClick = {(event) => {
     props.setIsSearching(false);
     props.setData(searchData);
+    props.setPageSelected(1);
     setSearchInput('');
   }}>Cancel search</button> : null;
   
