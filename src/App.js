@@ -106,19 +106,19 @@ function App() {
   if (error) {
     return <div>Error: {error.message}</div>
   } else if (isLoading) {
-    return <div>Loading... Please wait.</div>
+    return <div className = 'modal'>Loading... Please wait.</div>
   } else {
     return (
-      <>
-      <header>
-        <h1>Starting...</h1>
-      </header>
-      <main>
-        <Searchbar searchData = {searchData} setData = {setData} isSearching = {isSearching} setIsSearching = {setIsSearching} selected = {selectedDataType} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} />
-        <Pagination data = {data} pages = {pages} pageSelected = {pageSelected} setPageSelected = {setPageSelected} itemsPerPage = {itemsPerPage} setItemsPerPage = {setItemsPerPage} isSearching = {isSearching} />
-        <Output data = {data} selectedDataType = {selectedDataType}  pages = {pages} pageSelected = {pageSelected} />
-      </main>
-      </>
+      <div className = 'wrapper'>
+        <header>
+          <h1 class = 'title'>SWAPIapp</h1>
+        </header>
+        <main>
+          <Searchbar searchData = {searchData} setData = {setData} isSearching = {isSearching} setIsSearching = {setIsSearching} selected = {selectedDataType} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} />
+          <Pagination data = {data} pages = {pages} pageSelected = {pageSelected} setPageSelected = {setPageSelected} itemsPerPage = {itemsPerPage} setItemsPerPage = {setItemsPerPage} isSearching = {isSearching} />
+          <Output data = {data} selectedDataType = {selectedDataType}  pages = {pages} pageSelected = {pageSelected} />
+        </main>
+      </div>
     );
   }  
 
