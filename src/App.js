@@ -111,7 +111,7 @@ function App() {
     return (
       <div className = 'wrapper'>
         <header>
-          <h1 class = 'title'>SWAPIapp</h1>
+          <h1 className = 'title'>SWAPIapp</h1>
         </header>
         <main>
           <Searchbar searchData = {searchData} setData = {setData} isSearching = {isSearching} setIsSearching = {setIsSearching} selected = {selectedDataType} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} />
