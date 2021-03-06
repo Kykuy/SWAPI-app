@@ -52,7 +52,7 @@ function Modal(props) {
     return result;
   }
 
-  const modal = isModalLoading ? <p className = 'modal'>Loading...</p> :
+  const modal = isModalLoading ? <p className = 'modal-window'>Loading...</p> :
   <section className = 'modal-window'>          
     <div className = 'modal-container'>
       {Object.entries(modalDataToDisplay)
