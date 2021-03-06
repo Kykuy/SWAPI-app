@@ -106,7 +106,7 @@ function App() {
   if (error) {
     return <div>Error: {error.message}</div>
   } else if (isLoading) {
-    return <div className = 'modal'>Loading... Please wait.</div>
+    return <div className = 'modal-window'>Loading... Please wait.</div>
   } else {
     return (
       <div className = 'wrapper'>
