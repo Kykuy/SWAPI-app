@@ -55,6 +55,7 @@ function Modal(props) {
   const modal = isModalLoading ? <p className = 'modal-window'>Loading...</p> :
   <section className = 'modal-window'>          
     <div className = 'modal-container'>
+      <button className = 'close-modal-btn' onClick = {(event) => props.setShowModal(false)}>X</button>
       {Object.entries(modalDataToDisplay)
         .filter(([key, value]) => (key !== 'created' && key !== 'edited' && key !== 'url') /*&& value?.length > 0*/)
         .map(([key, value]) => {
@@ -168,8 +169,7 @@ function Modal(props) {
             default:
           }
         }
-        )}
-      <button onClick = {(event) => props.setShowModal(false)}>Hide modal</button>
+        )}      
     </div>
   </section>;
 

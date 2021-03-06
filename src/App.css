@@ -38,6 +38,7 @@ body {
 }
 
 .modal-container {
+  position: relative;
   background-color: whitesmoke;
   width: 500px;
   color: black;
@@ -49,8 +50,12 @@ body {
   justify-content: space-between;  
 }
 
-.modal-row:not(:first-child) {
+.modal-row:not(:first-of-type) {
   padding-top: 5px;  
+}
+
+.modal-row:first-of-type {
+  margin-top: 1.5rem;
 }
 
 .modal-row p {
@@ -60,3 +65,12 @@ body {
   justify-content: center;   
   text-align: right;
 } 
+
+.close-modal-btn {
+  position: absolute;
+  font-size: 14px;
+  font-weight: 900;  
+  padding: 3px;
+  top: 0;
+  right: 0;
+}
