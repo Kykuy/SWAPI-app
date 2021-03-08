@@ -29,9 +29,13 @@ function Modal(props) {
           }));
           return [key, fetchedData.join(", ")];
         } else if (key === 'homeworld') {
-          const response = await fetch(value);
-          const result = await response.json();          
-          return [key, result.name];
+          if (value === null) {
+            return [key, ''];
+          } else {
+            const response = await fetch(value);
+            const result = await response.json();          
+            return [key, result.name];
+          }
         } else {
           return [key, value];
         }
@@ -44,8 +48,8 @@ function Modal(props) {
   }, [modalData, setIsModalLoading]);
   console.log('modalDataToDisplay', modalDataToDisplay);
 
-  function makeKeyReadable(keyString) {
-    let result = keyString;
+  function makeStringReadable(string) {
+    let result = string;
 
     result = `${result[0].toUpperCase()}${result.slice(1)}`;
     result = result.replace(/_/g, ' ');
@@ -63,107 +67,107 @@ function Modal(props) {
             case 'people':
               return key === 'mass' ? (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p>{value?.length > 0 ? value : 'none'} kg</p>
+                  <p>{makeStringReadable(key)}:</p><p>{value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')} kg</p>
                 </article>
               ) : key === 'height' ? (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p>{value?.length > 0 ? value : 'none'} cm</p>
+                  <p>{makeStringReadable(key)}:</p><p>{value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')} cm</p>
                 </article>
               ) : (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p>{value?.length > 0 ? value : 'none'}</p>
+                  <p>{makeStringReadable(key)}:</p><p>{value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')}</p>
                 </article>
               );
       
             case 'vehicles':
               return key === 'cargo_capacity' ? (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value?.length > 0 ? value : 'none'} kg</p>
+                  <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')} kg</p>
                 </article>
               ) : key === 'length' ? (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value?.length > 0 ? value : 'none'} m</p>
+                  <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')} m</p>
                 </article>
               ) : key === 'max_atmosphering_speed' ? (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value?.length > 0 ? value : 'none'} kph</p>
+                  <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')} kph</p>
                 </article>
               ) : (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value?.length > 0 ? value : 'none'}</p>
+                  <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')}</p>
                 </article>
               );
       
             case 'starships':
               return key === 'cargo_capacity' ? (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value?.length > 0 ? value : 'none'} kg</p>
+                  <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')} kg</p>
                 </article>
               ) : key === 'length' ? (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value?.length > 0 ? value : 'none'} m</p>
+                  <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')} m</p>
                 </article>
               ) : key === 'max_atmosphering_speed' && value !== 'n/a' ? (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value?.length > 0 ? value : 'none'} kph</p>
+                  <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')} kph</p>
                 </article>
               ) : key === 'MGLT' ? (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value?.length > 0 ? value : 'none'} ph</p>
+                  <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')} ph</p>
                 </article>
               ) : (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value?.length > 0 ? value : 'none'}</p>
+                  <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')}</p>
                 </article>
               );
             case 'planets':
               return key === 'rotation_period' ? (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value?.length > 0 ? value : 'none'} hour(s)</p>
+                  <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')} hour(s)</p>
                 </article>
               ) : key === 'diameter' ? (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value?.length > 0 ? value : 'none'} km</p>
+                  <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')} km</p>
                 </article>
               ) : key === 'orbital_period' ? (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value?.length > 0 ? value : 'none'} day(s)</p>
+                  <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')} day(s)</p>
                 </article>
               ) : key === 'surface_water' ? (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value?.length > 0 ? value : 'none'} %</p>
+                  <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')} %</p>
                 </article>
               ) : key === 'gravity' ? (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value?.length > 0 ? value : 'none'} G</p>
+                  <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')} G</p>
                 </article>
               ) : (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value?.length > 0 ? value : 'none'}</p>
+                  <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')}</p>
                 </article>
               );
             case 'species':
               return key === 'average_lifespan' ? (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value?.length > 0 ? value : 'none'} year(s)</p>
+                  <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')} year(s)</p>
                 </article>
               ) : key === 'average_height' ? (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value?.length > 0 ? value : 'none'} cm</p>
+                  <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')} cm</p>
                 </article>
               ) : (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value?.length > 0 ? value : 'none'}</p>
+                  <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')}</p>
                 </article>
               );
             case 'films':
               return key !== 'episode_id' ? (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value?.length > 0 ? value : 'none'}</p>
+                  <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')}</p>
                 </article>
               ) : (
                 <article className = 'modal-row' key = {key}>
-                  <p>{makeKeyReadable(key)}:</p><p> {value}</p>
+                  <p>{makeStringReadable(key)}:</p><p> {makeStringReadable(value)}</p>
                 </article>
               );
             default:
