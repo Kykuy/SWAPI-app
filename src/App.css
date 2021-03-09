@@ -22,6 +22,12 @@ body {
   font-size: 60px;
   font-family: Helvetica, sans-serif;
   font-weight: 400;
+  text-align: center;
+}
+
+.selectForm {
+  max-width: 60%;
+  margin: 0 auto;
 }
 
 .modal-window {
