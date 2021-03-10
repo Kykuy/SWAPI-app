@@ -30,6 +30,17 @@ body {
   margin: 0 auto;
 }
 
+.selectForm fieldset legend {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #ffe300;
+  font-family: Helvetica, sans-serif;
+}
+
+.selectForm fieldset :is(label, input) {
+  margin-left: 5px;
+}
+
 .modal-window {
   background-color: rgba(0,0,0,0.5);
   position: fixed;
