@@ -49,7 +49,7 @@ function startSearch() {
     <form className = 'selectForm' action = 'return false;'>
 
       <fieldset>
-        <legend>What are we searching for?</legend>
+        <legend className = 'selectFormLegend'>What are we searching for?</legend>
 
         {/* <input type = 'radio' value = 'people' name = 'dataType' id = 'people' checked = {props.selected === 'people'} onChange = {(e) => {props.setFetchUrl(`https://swapi.py4e.com/api/${e.target.value}/`); props.setSelectedDataType(e.target.value); props.setIsLoading(true);}}></input>
         <label htmlFor = 'people'>People</label>
@@ -71,7 +71,7 @@ function startSearch() {
 
         {datatypes.map(datatype => {
           return <Fragment key = {datatype}>
-          <input type = 'radio' value = {datatype.toLowerCase()} name = 'dataType' id = {datatype.toLowerCase()} checked = {props.selected === datatype.toLowerCase()}
+          <input type = 'radio' value = {datatype.toLowerCase()} name = 'dataType' className = 'datatypeInput' id = {datatype.toLowerCase()} checked = {props.selected === datatype.toLowerCase()}
           onChange = {(event) => {
             props.setFetchUrl(`https://swapi.py4e.com/api/${event.target.value}/`);
             props.setSelectedDataType(event.target.value);
@@ -81,7 +81,7 @@ function startSearch() {
             setSearchInput('');
           }
           }></input>
-          <label htmlFor = {datatype.toLowerCase()}>{datatype}</label>
+          <label className = 'datatypeLabel' htmlFor = {datatype.toLowerCase()}>{datatype}</label>
           </Fragment>
         })}
 
