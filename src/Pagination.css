@@ -12,4 +12,5 @@
 
 .pagination button:hover {
   background-color: #62686d;
+  cursor: pointer;
 }
