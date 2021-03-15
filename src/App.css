@@ -26,8 +26,9 @@ body {
 }
 
 .selectForm {
-  max-width: 60%;
+  max-width: 70%;
   margin: 0 auto;
+  text-align: center;
 }
 
 .selectForm fieldset {
@@ -95,6 +96,28 @@ body {
 
 .datatypeLabel {  
   vertical-align: 0.1em;
+}
+
+.searchInput {
+  height: 38px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  transition: 0.25s all ease-in-out;
+}
+
+.searchInput:focus {
+  border-color: #66afe9;
+  outline: 0;
+  box-shadow: 0 0 8px rgb(102 175 233 / 60%);
+}
+
+.searchInputLabel {
+  color: white;
+}
+
+.searchBtn, .cancelSearchBtn {
+  height: 38px;
+  padding: 8px 12px;
 }
 
 .modal-window {

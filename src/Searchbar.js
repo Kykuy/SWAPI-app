@@ -21,7 +21,7 @@ function Searchbar(props) {
   : null;
   // console.log('searchData', searchData);
 
-  const cancelSearch = props.isSearching ? <button onClick = {(event) => {
+  const cancelSearch = props.isSearching ? <button className = 'cancelSearchBtn' onClick = {(event) => {
     props.setIsSearching(false);
     props.setData(searchData);
     setSearchInput('');
@@ -86,14 +86,14 @@ function startSearch() {
         })}
 
       </fieldset>
-      <label htmlFor = 'search-input'>Search for Star Wars Data!</label>
-      <input list = 'searchList' type = 'search' value = {searchInput} id = 'search-input' size = '27' disabled = {props.selected === 'films'}
+      <label htmlFor = 'search-input' className = 'searchInputLabel'>Search for Star Wars Data!</label>
+      <input list = 'searchList' className = 'searchInput' type = 'search' value = {searchInput} id = 'search-input' size = '27' disabled = {props.selected === 'films'}
         placeholder = {props.selected === 'films' ? 'Searching is disabled for films' : 'Start typing to find data. SW data.'}
         onChange = {(event) => setSearchInput(event.target.value)}
         onKeyDown = {(event) => event.key === 'Enter' ? startSearch() : null}
       ></input>
       {datalist}
-      <button disabled = {props.selected === 'films' || searchInput.length < 1} onClick = {(event) => {
+      <button className = 'searchBtn' disabled = {props.selected === 'films' || searchInput.length < 1} onClick = {(event) => {
         startSearch();
       }}>Start search</button>
       {cancelSearch}
