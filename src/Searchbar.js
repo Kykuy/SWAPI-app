@@ -86,17 +86,19 @@ function startSearch() {
         })}
 
       </fieldset>
-      <label htmlFor = 'search-input' className = 'searchInputLabel'>Search for Star Wars Data!</label>
-      <input list = 'searchList' className = 'searchInput' type = 'search' value = {searchInput} id = 'search-input' size = '27' disabled = {props.selected === 'films'}
-        placeholder = {props.selected === 'films' ? 'Searching is disabled for films' : 'Start typing to find data. SW data.'}
-        onChange = {(event) => setSearchInput(event.target.value)}
-        onKeyDown = {(event) => event.key === 'Enter' ? startSearch() : null}
-      ></input>
-      {datalist}
-      <button className = 'searchBtn' disabled = {props.selected === 'films' || searchInput.length < 1} onClick = {(event) => {
-        startSearch();
-      }}>Start search</button>
-      {cancelSearch}
+      <section className = 'searchbar'>
+        <label htmlFor = 'search-input' className = 'searchInputLabel'>Search for Star Wars Data!</label>
+        <input list = 'searchList' className = 'searchInput' type = 'search' value = {searchInput} id = 'search-input' size = '27' disabled = {props.selected === 'films'}
+          placeholder = {props.selected === 'films' ? 'Searching is disabled for films' : 'Start typing to find data. SW data.'}
+          onChange = {(event) => setSearchInput(event.target.value)}
+          onKeyDown = {(event) => event.key === 'Enter' ? startSearch() : null}
+        ></input>
+        {datalist}
+        <button className = 'searchBtn' disabled = {props.selected === 'films' || searchInput.length < 1} onClick = {(event) => {
+          startSearch();
+        }}>Start search</button>
+        {cancelSearch}
+      </section>
     </form>
 
     
