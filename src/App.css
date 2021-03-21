@@ -62,8 +62,7 @@ body {
 }
 
 .datatypeInput:checked + .datatypeLabel {
-  font-weight: 600;
-  /* border-bottom: 1px solid wheat; */
+  font-weight: 600;  
   text-decoration: underline;
 }
 
@@ -89,13 +88,18 @@ body {
   color: wheat;  
 } 
 
+.datatypeInput:nth-of-type(4):checked::after {
+  right: -2px;
+}
+
 .datatypeInput:not(:first-of-type),
 .datatypeLabel,
 .searchInput {
   margin-left: 5px;
 }
 
-.datatypeLabel {  
+.datatypeLabel {
+  display: inline-block;     
   vertical-align: 0.1em;
 }
 
