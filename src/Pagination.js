@@ -3,7 +3,7 @@ import React, {useState, useEffect, Fragment} from 'react';
 function Pagination(props) {
   const [pageToJumpTo, setPageToJumpTo] = useState(1);
 
-  const resultsNumber = props.isSearching && props.data.length < 1 ? <p>No matches found</p> : <p>Showing {`${1 + (props.pageSelected - 1) * props.itemsPerPage}`}-{`${(props.pageSelected - 1) * props.itemsPerPage + props.pages[props.pageSelected]?.length}`} of {`${props.data?.length}`} items</p>;
+  const resultsNumber = props.isSearching && props.data.length < 1 ? <p>No matches found</p> : <p className = 'resultsNumber'>Showing {`${1 + (props.pageSelected - 1) * props.itemsPerPage}`}-{`${(props.pageSelected - 1) * props.itemsPerPage + props.pages[props.pageSelected]?.length}`} of {`${props.data?.length}`} items</p>;
 
   const pages = props.isSearching && props.data.length < 1 ? <>{resultsNumber}</> :
    <section className = 'pagination'>      
@@ -60,8 +60,8 @@ function Pagination(props) {
       }
     }}>&gt;</button>
 
-    <label htmlFor = 'pageToJump'>Jump to page:</label>
-    <input id = 'pageToJump' name = 'pageToJump' type = 'number' min = '1' max = {Object.keys(props.pages).length} onChange = {(event) => {
+    <label className = 'pageToJumpLabel' htmlFor = 'pageToJump'>Jump to page:</label>
+    <input className = 'pageToJumpInput' id = 'pageToJump' name = 'pageToJump' type = 'number' min = '1' max = {Object.keys(props.pages).length} onChange = {(event) => {
       if (event.target.value < 0) {
         event.target.value = event.target.min;          
       } else if (event.target.value > parseInt(event.target.max, 10)) {
@@ -81,7 +81,7 @@ function Pagination(props) {
     >Jump</button>
 
     <label htmlFor = 'itemsPerPage'>Maximum items displayed per page:</label>
-    <select id = 'itemsPerPage' name = 'itemsPerPage' value = {props.itemsPerPage} onChange = {(event) => {
+    <select className = 'itemsPerPageSelect' id = 'itemsPerPage' name = 'itemsPerPage' value = {props.itemsPerPage} onChange = {(event) => {
       props.setItemsPerPage(parseInt(event.target.value, 10))
     }}>
       <option value = '10'>10</option>
