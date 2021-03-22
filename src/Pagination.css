@@ -43,12 +43,14 @@
   margin-left: auto;
 }
 
-.pageToJumpInput {
+.pageToJumpInput,
+.itemsPerPageSelect {
   margin-left: 2px;
   max-width: 40px;
 }
 
-.pageToJumpInput:focus {
+.pageToJumpInput:focus,
+.itemsPerPageSelect:focus {
   border-color: #66afe9;
   border-width: 1px;
   outline: 0;

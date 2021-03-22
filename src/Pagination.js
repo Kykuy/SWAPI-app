@@ -80,7 +80,7 @@ function Pagination(props) {
     }}
     >Jump</button>
 
-    <label htmlFor = 'itemsPerPage'>Maximum items displayed per page:</label>
+    <label className = 'itemsPerPageLabel' htmlFor = 'itemsPerPage'>Maximum items displayed per page:</label>
     <select className = 'itemsPerPageSelect' id = 'itemsPerPage' name = 'itemsPerPage' value = {props.itemsPerPage} onChange = {(event) => {
       props.setItemsPerPage(parseInt(event.target.value, 10))
     }}>
