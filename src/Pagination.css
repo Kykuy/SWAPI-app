@@ -39,6 +39,26 @@
   opacity: 0.66;  
 }
 
+.pages {
+  min-width: 200px;
+  max-width: 250px;  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  
+}
+
+/* .pages :is(button:not(:first-of-type), span) {
+  margin-left: 5px;
+} */
+
+/* .pages button:first-of-type {
+  margin-right: auto;
+}
+
+.pages button:last-of-type {
+  margin-left: auto;
+} */
+
 .pageToJumpLabel {
   margin-left: 5px;
 }
