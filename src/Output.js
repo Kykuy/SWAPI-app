@@ -86,7 +86,7 @@ const Output = (props) => {
 
   return props?.selectedDataType !== 'films' ? (
     <>         
-    <section>
+    <section className = 'output'>
       {/* {finalOutput.map(item => {
         return (
           <article key = {item.url}>

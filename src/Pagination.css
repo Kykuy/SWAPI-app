@@ -3,8 +3,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  max-width: 80%;
-  margin-top: 3px;
+  max-width: 70%;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;  
 }
@@ -40,6 +40,10 @@
 }
 
 .pageToJumpLabel {
+  margin-left: 5px;
+}
+
+.itemsPerPageLabel {
   margin-left: auto;
 }
 
@@ -59,5 +63,5 @@
 
 .resultsNumber {
   width: 100%;
-  margin-top: 5px;
+  margin-top: 10px;
 }
