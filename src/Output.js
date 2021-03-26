@@ -96,7 +96,7 @@ const Output = (props) => {
       })} */}
       {props.pages[props.pageSelected]?.map(item => {
         return (
-          <article key = {item.url}>
+          <article className = 'outputEntry' key = {item.url}>
             <h1 onClick = {(event) => {
               setShowModal(prevShowModal => !prevShowModal);
               setModalData(item);
@@ -120,11 +120,11 @@ const Output = (props) => {
       })} */}
       {props.pages[props.pageSelected]?.map(item => {
         return (
-          <article key = {item.url}>
-          <h1 onClick = {(event) => {
-            setShowModal(prevShowModal => !prevShowModal);
-            setModalData(item);
-          }}>Title: {item.title}</h1>
+          <article className = 'outputEntry' key = {item.url}>
+            <h1 onClick = {(event) => {
+              setShowModal(prevShowModal => !prevShowModal);
+              setModalData(item);
+            }}>Title: {item.title}</h1>
           </article>
         );
       })}
