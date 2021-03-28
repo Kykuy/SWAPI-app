@@ -69,6 +69,7 @@
 
 .pageToJumpInput,
 .itemsPerPageSelect {
+  text-align: center;
   margin-left: 2px;
   max-width: 40px;
 }

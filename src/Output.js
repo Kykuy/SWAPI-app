@@ -96,21 +96,25 @@ const Output = (props) => {
       })} */}
       {props.pages[props.pageSelected]?.map(item => {
         let additionalInfo;
-
-        if (selectedDataType === 'vehicles') {
+        
+        if (selectedDataType === 'people') {
+          additionalInfo = makeStringReadable(item?.gender);
+        } else if (selectedDataType === 'vehicles') {
           additionalInfo = makeStringReadable(item?.vehicle_class);
         } else if (selectedDataType === 'starships') {
           additionalInfo = makeStringReadable(item?.starship_class);
         } else if (selectedDataType === 'species') {
           additionalInfo = `${makeStringReadable(item?.classification)}, ${item?.designation}`;
+        } else if (selectedDataType === 'planets') {
+          additionalInfo = <span>{makeStringReadable(item?.climate)}<br/>{`${makeStringReadable(item?.terrain)}`}</span>;
         }
 
         return (
-          <article className = 'outputEntry' key = {item.url}>
-            <p className = 'entryName' onClick = {(event) => {
+          <article className = 'outputEntry' key = {item.url} onClick = {(event) => {
               setShowModal(prevShowModal => !prevShowModal);
               setModalData(item);
-            }}>Name: {item.name}</p>            
+            }}>
+            <p className = 'entryName'>Name: {item.name}</p>            
             <p className = 'entryType'>{additionalInfo}</p>
           </article>
         );
