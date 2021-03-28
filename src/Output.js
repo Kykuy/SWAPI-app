@@ -1,10 +1,11 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import Modal from './Modal.js';
+import {makeStringReadable} from './utils';
 
 const Output = (props) => { 
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState({});  
-
+  const {selectedDataType} = props;
   // const modal = showModal ? isModalLoading ? (
   // <Modal>
   //   <article className = 'modal'>
@@ -24,7 +25,7 @@ const Output = (props) => {
 
     const modal = showModal ? 
     (
-      <Modal setShowModal = {setShowModal} modalData = {modalData} setModalData = {setModalData} selectedDataType = {props.selectedDataType}/>
+      <Modal setShowModal = {setShowModal} modalData = {modalData} setModalData = {setModalData} selectedDataType = {selectedDataType}/>
     ) : null; 
     
   // console.log('output props', props);
@@ -52,8 +53,7 @@ const Output = (props) => {
   // }
 
   // let [pages, setPages] = useState({});
-  // let [pageSelected, setPageSelected] = useState('1');
-  let {data} = props;
+  // let [pageSelected, setPageSelected] = useState('1');  
 
   // createPages(data);
 
@@ -84,7 +84,7 @@ const Output = (props) => {
   //  data.filter( item => item.name.toLowerCase().includes( props.searchInput.toLowerCase() ) ) :
   //  data.filter( item => item.title.toLowerCase().includes( props.searchInput.toLowerCase() ) );
 
-  return props?.selectedDataType !== 'films' ? (
+  return selectedDataType !== 'films' ? (
     <>         
     <section className = 'output'>
       {/* {finalOutput.map(item => {
@@ -95,12 +95,23 @@ const Output = (props) => {
         );
       })} */}
       {props.pages[props.pageSelected]?.map(item => {
+        let additionalInfo;
+
+        if (selectedDataType === 'vehicles') {
+          additionalInfo = makeStringReadable(item?.vehicle_class);
+        } else if (selectedDataType === 'starships') {
+          additionalInfo = makeStringReadable(item?.starship_class);
+        } else if (selectedDataType === 'species') {
+          additionalInfo = `${makeStringReadable(item?.classification)}, ${item?.designation}`;
+        }
+
         return (
           <article className = 'outputEntry' key = {item.url}>
-            <h1 onClick = {(event) => {
+            <p className = 'entryName' onClick = {(event) => {
               setShowModal(prevShowModal => !prevShowModal);
               setModalData(item);
-            }}>Name: {item.name}</h1>
+            }}>Name: {item.name}</p>            
+            <p className = 'entryType'>{additionalInfo}</p>
           </article>
         );
       })}
@@ -110,7 +121,7 @@ const Output = (props) => {
   ) :
   ( 
     <>    
-    <section>
+    <section className = 'output'>
       {/* {finalOutput.map(item => {
         return (
           <article key = {item.url}>
@@ -121,10 +132,10 @@ const Output = (props) => {
       {props.pages[props.pageSelected]?.map(item => {
         return (
           <article className = 'outputEntry' key = {item.url}>
-            <h1 onClick = {(event) => {
+            <p className = 'entryName' onClick = {(event) => {
               setShowModal(prevShowModal => !prevShowModal);
               setModalData(item);
-            }}>Title: {item.title}</h1>
+            }}>Title: {item.title}</p>
           </article>
         );
       })}
