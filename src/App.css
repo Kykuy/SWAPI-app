@@ -168,9 +168,10 @@ body {
 .outputEntry {  
   margin-bottom: 5px;
   display: flex;
-  min-height: 100px;
+  flex-flow: column nowrap;
+  min-height: 80px;
   background-color: #55595f;  
-  flex: 1 0 26%;
+  flex: 0 0 calc(33% - 5px);
   justify-content: center;
   align-items: center;
 }
@@ -181,10 +182,14 @@ body {
 }
 
 .outputEntry:last-of-type {
-  flex-basis: calc(33%);
+  flex-basis: calc(33% - 5px);
   flex-grow: 0;
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
+}
+
+.entryName {
+  font-weight: bold;
 }
 
 .modal-window {
