@@ -5,7 +5,7 @@ import {makeStringReadable} from './utils';
 const Output = (props) => { 
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState({});  
-  const {selectedDataType} = props;
+  const {selectedDataType, speciesNames} = props;
   // const modal = showModal ? isModalLoading ? (
   // <Modal>
   //   <article className = 'modal'>
@@ -98,7 +98,9 @@ const Output = (props) => {
         let additionalInfo;
         
         if (selectedDataType === 'people') {
-          additionalInfo = makeStringReadable(item?.gender);
+          if (item?.species.length < 1) {
+            additionalInfo = `Unknown species, ${item?.gender}`;
+          } else additionalInfo = `${speciesNames[item?.species]}, ${item?.gender}`;
         } else if (selectedDataType === 'vehicles') {
           additionalInfo = makeStringReadable(item?.vehicle_class);
         } else if (selectedDataType === 'starships') {
@@ -114,7 +116,7 @@ const Output = (props) => {
               setShowModal(prevShowModal => !prevShowModal);
               setModalData(item);
             }}>
-            <p className = 'entryName'>Name: {item.name}</p>            
+            <p className = 'entryName'>{item.name}</p>            
             <p className = 'entryType'>{additionalInfo}</p>
           </article>
         );
@@ -139,7 +141,7 @@ const Output = (props) => {
             <p className = 'entryName' onClick = {(event) => {
               setShowModal(prevShowModal => !prevShowModal);
               setModalData(item);
-            }}>Title: {item.title}</p>
+            }}>{item.title}</p>
             <p className = 'entryType'>{`Episode ${item.episode_id}`}</p>
           </article>
         );
