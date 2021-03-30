@@ -224,20 +224,16 @@ body {
   background-color: whitesmoke;
   width: 500px;
   color: black;
-  padding: 7px;    
 }
 
 .modal-row {
   display: flex;
-  justify-content: space-between;  
+  justify-content: space-between;
+  padding: 3px 5px;  
 }
 
-.modal-row:not(:first-of-type) {
-  padding-top: 5px;  
-}
-
-.modal-row:first-of-type {
-  margin-top: 1.5rem;
+.modal-row:nth-child(2n) {
+  background-color: #e1e4e4;
 }
 
 .modal-row p {
@@ -250,9 +246,10 @@ body {
 
 .close-modal-btn {
   position: absolute;
+  cursor: pointer;
   font-size: 14px;
   font-weight: 900;  
   padding: 3px;
-  top: 0;
+  top: -2rem;
   right: 0;
 }
