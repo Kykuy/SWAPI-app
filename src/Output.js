@@ -133,13 +133,14 @@ const Output = (props) => {
           </article>
         );
       })} */}
-      {props.pages[props.pageSelected]?.map(item => {
+      {props.pages[props.pageSelected]?.sort((a, b) => a.episode_id - b.episode_id).map(item => {
         return (
           <article className = 'outputEntry' key = {item.url}>
             <p className = 'entryName' onClick = {(event) => {
               setShowModal(prevShowModal => !prevShowModal);
               setModalData(item);
             }}>Title: {item.title}</p>
+            <p className = 'entryType'>{`Episode ${item.episode_id}`}</p>
           </article>
         );
       })}
