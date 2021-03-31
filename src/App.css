@@ -159,28 +159,28 @@ body {
 }
 
 .output {
-  max-width: 70%;
+  max-width: calc(70% + 10px);
   margin: 0 auto;
   display: flex;
   flex-flow: row wrap;  
 }
 
 .outputEntry {  
-  margin-bottom: 5px;
+  margin: 5px;
   display: flex;
   flex-flow: column nowrap;
   min-height: 80px;
   background-color: #55595f;  
-  flex: 1 0 26%;
-  max-width: calc(33.5% - 5px);
+  flex: 1 0 calc(33.33% - 10px);
+  max-width: calc(33.33% - 10px);
   justify-content: center;
   align-items: center;
   transition: 0.5s all ease-out;
 }
 
-.outputEntry:not(:nth-of-type(3n+1)) {
+/* .outputEntry:not(:nth-of-type(3n+1)) {
   margin-left: 5px;
-}
+} */
 
 /* .outputEntry:last-of-type {
   flex-basis: 26%;
