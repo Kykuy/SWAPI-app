@@ -175,7 +175,9 @@ body {
   max-width: calc(33.33% - 10px);
   justify-content: center;
   align-items: center;
-  transition: 0.5s all ease-out;
+  transition: all 0.1s ease-out;
+  box-shadow: 0 0 0.1px transparent;
+  -webkit-font-smoothing: antialiased;  
 }
 
 /* .outputEntry:not(:nth-of-type(3n+1)) {
@@ -189,7 +191,9 @@ body {
 
 .outputEntry:hover {
   cursor: pointer;
-  background-color: #3f4144;
+  background-color: #62686d;
+  transform: scale(1.02);
+  box-shadow: 0 0 3px 0.5px wheat;   
 }
 
 .outputEntry:hover .entryName {
