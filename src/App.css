@@ -16,13 +16,13 @@ body {
   margin: 0 auto;
   background-color: #1c1e22;
   border: 1px solid black;
-  max-width: 60%;
+  max-width: 100%;
   min-height: 100vh;
 }
 
 .title {
   color: #ffe300;
-  font-size: 60px;
+  font-size: 4rem;
   font-family: Helvetica, sans-serif;
   font-weight: 400;
   text-align: center;
@@ -254,4 +254,27 @@ body {
   padding: 3px;
   top: -2rem;
   right: 0;
+}
+
+@media screen and (min-width: 1440px) {
+  .wrapper {
+    max-width: 60%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  :root {
+    font-size: 12px;
+  }
+
+  .selectForm,
+  .output
+  {
+    max-width: 100%;
+  }
+
+  .outputEntry {
+    flex-basis: 34%;
+    max-width: 100%;
+  }
 }
