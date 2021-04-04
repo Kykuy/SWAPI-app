@@ -88,8 +88,51 @@
   margin-bottom: 10px;
 }
 
+@media screen and (max-width: 1100px) and (min-width: 760px) {
+  .pagination {
+    max-width: 80%;
+  }  
+}
+
+@media screen and (max-width: 890px) and (min-width: 760px) {
+  .itemsPerPageLabel {
+    margin-left: 0;
+  }
+}
+
 @media screen and (max-width: 720px) {
   .pagination {
     max-width: 100%;
+    padding: 5px;
+  }
+
+  .pages {
+    min-width: 170px;
+    max-width: 170px;
+  }
+
+  .pageToJumpLabel {
+    margin-left: auto;
+  }
+
+  .itemsPerPageLabel {
+    margin-left: 0;
+  }
+
+  .itemsPerPageLabel,
+  .itemsPerPageSelect {
+    margin-top: 5px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .pages {
+    min-width: 140px;
+    max-width: 140px;    
+  }
+
+  .pagination button {
+    padding: 0px 3px;
+    border-width: 2px;        
   }
 }

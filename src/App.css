@@ -256,13 +256,23 @@ body {
   right: 0;
 }
 
+@media screen and (max-width: 1100px) and (min-width: 760px) {
+  .selectForm {
+    max-width: 80%;
+  }
+  
+  .output {
+    max-width: calc(80% + 10px);
+  }
+}
+
 @media screen and (min-width: 1440px) {
   .wrapper {
     max-width: 60%;
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 720px) {
   :root {
     font-size: 12px;
   }
@@ -273,8 +283,23 @@ body {
     max-width: 100%;
   }
 
+  .selectForm {
+    padding: 0 5px;
+  }
+
   .outputEntry {
     flex-basis: 34%;
     max-width: 100%;
+  }
+
+  .searchInputLabel {
+    display: block;
+    font-size: 1.25rem;
+  }
+
+  @media screen and (max-width: 320px) {
+    .searchBtn {
+      padding: 6px 5px;
+    }
   }
 }
