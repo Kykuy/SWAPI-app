@@ -224,7 +224,7 @@ body {
 .modal-container {
   position: relative;
   background-color: whitesmoke;
-  width: 500px;
+  min-width: 500px;
   color: black;
 }
 
@@ -274,7 +274,7 @@ body {
 
 @media screen and (max-width: 720px) {
   :root {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .selectForm,
@@ -298,6 +298,10 @@ body {
   }
 
   @media screen and (max-width: 320px) {
+    :root {
+      font-size: 12px;
+    }
+
     .searchBtn {
       padding: 6px 5px;
     }

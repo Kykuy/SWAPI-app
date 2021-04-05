@@ -125,7 +125,13 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 360px) {
+  .pageToJumpInput,
+  .pagination button,
+  .itemsPerPageSelect {
+    min-height: 22px;
+  }
+
   .pages {
     min-width: 140px;
     max-width: 140px;    
@@ -133,6 +139,7 @@
 
   .pagination button {
     padding: 0px 3px;
-    border-width: 2px;        
+    border-width: 2px;
+    font-size: 1.2rem;        
   }
 }
