@@ -1,11 +1,59 @@
 import React, {useState, useEffect, Fragment } from 'react';
 
 function Searchbar(props) {
-  const [searchInput, setSearchInput] = useState('');  
+  const [searchInput, setSearchInput] = useState('');
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);  
 
   const datatypes = ['People', 'Vehicles', 'Starships', 'Planets', 'Species', 'Films'];
 
   const {searchData} = props;
+
+  useEffect(() => {
+    function handleResize() {
+      setScreenWidth(window.innerWidth);
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [])
+ 
+  const categoryLabels = screenWidth > 425 ?
+
+   datatypes.map(datatype => {
+    return <Fragment key = {datatype}>
+    <input type = 'radio' value = {datatype.toLowerCase()} name = 'dataType' className = 'datatypeInput' id = {datatype.toLowerCase()} checked = {props.selected === datatype.toLowerCase()}
+    onChange = {(event) => {
+      props.setFetchUrl(`https://swapi.py4e.com/api/${event.target.value}/`);
+      props.setSelectedDataType(event.target.value);
+      props.setPageSelected(1);
+      props.setIsLoading(true);
+      props.setIsSearching(false);
+      setSearchInput('');
+    }
+    }></input>
+    <label className = 'datatypeLabel' htmlFor = {datatype.toLowerCase()}>{datatype}</label>
+    </Fragment>
+   }) :
+
+    <section className = 'categoryLabels'>
+      {datatypes.map(datatype => {
+        return <Fragment key = {datatype}>
+        <span>
+          <input type = 'radio' value = {datatype.toLowerCase()} name = 'dataType' className = 'datatypeInput' id = {datatype.toLowerCase()} checked = {props.selected === datatype.toLowerCase()}
+          onChange = {(event) => {
+            props.setFetchUrl(`https://swapi.py4e.com/api/${event.target.value}/`);
+            props.setSelectedDataType(event.target.value);
+            props.setPageSelected(1);
+            props.setIsLoading(true);
+            props.setIsSearching(false);
+            setSearchInput('');
+          }
+          }></input>
+          <label className = 'datatypeLabel' htmlFor = {datatype.toLowerCase()}>{datatype}</label>
+        </span>
+        </Fragment>
+      })}
+    </section>;
 
   const datalist = searchInput.length >= 2 && searchData
   .filter(item => item.name.toLowerCase().startsWith(searchInput.toLowerCase()) || item.name.toLowerCase().includes(searchInput.toLowerCase()))
@@ -27,22 +75,22 @@ function Searchbar(props) {
     setSearchInput('');
   }}>Cancel search</button> : null;
   
-function startSearch() {
-  props.setData( searchData
-    .filter(item => item.name.toLowerCase().startsWith(searchInput.toLowerCase()) || item.name.toLowerCase().includes(searchInput.toLowerCase()))
-    .sort( (a, b) => {
-      if (a.name.toLowerCase().startsWith(searchInput.toLowerCase()) && !b.name.toLowerCase().startsWith(searchInput.toLowerCase())) {
-        return -1;
-      } else if (a.name.toLowerCase().startsWith(searchInput.toLowerCase()) && b.name.toLowerCase().startsWith(searchInput.toLowerCase())) {
-        return 0;
-      } else {
-        return 1;
-      }
-  }) );
-  props.setPageSelected(1);
-  props.setIsSearching(true);
-  setSearchInput('');
-}
+  function startSearch() {
+    props.setData( searchData
+      .filter(item => item.name.toLowerCase().startsWith(searchInput.toLowerCase()) || item.name.toLowerCase().includes(searchInput.toLowerCase()))
+      .sort( (a, b) => {
+        if (a.name.toLowerCase().startsWith(searchInput.toLowerCase()) && !b.name.toLowerCase().startsWith(searchInput.toLowerCase())) {
+          return -1;
+        } else if (a.name.toLowerCase().startsWith(searchInput.toLowerCase()) && b.name.toLowerCase().startsWith(searchInput.toLowerCase())) {
+          return 0;
+        } else {
+          return 1;
+        }
+    }) );
+    props.setPageSelected(1);
+    props.setIsSearching(true);
+    setSearchInput('');
+  }
 
   return (  
     <>  
@@ -69,21 +117,7 @@ function startSearch() {
         <input type = 'radio' value = 'films' name = 'dataType' id = 'films' checked = {props.selected === 'films'} onChange = {(e) => {props.setFetchUrl(`https://swapi.py4e.com/api/${e.target.value}/`); props.setSelectedDataType(e.target.value); props.setIsLoading(true);}}></input>
         <label htmlFor = 'films'>Films</label> */}
 
-        {datatypes.map(datatype => {
-          return <Fragment key = {datatype}>
-          <input type = 'radio' value = {datatype.toLowerCase()} name = 'dataType' className = 'datatypeInput' id = {datatype.toLowerCase()} checked = {props.selected === datatype.toLowerCase()}
-          onChange = {(event) => {
-            props.setFetchUrl(`https://swapi.py4e.com/api/${event.target.value}/`);
-            props.setSelectedDataType(event.target.value);
-            props.setPageSelected(1);
-            props.setIsLoading(true);
-            props.setIsSearching(false);
-            setSearchInput('');
-          }
-          }></input>
-          <label className = 'datatypeLabel' htmlFor = {datatype.toLowerCase()}>{datatype}</label>
-          </Fragment>
-        })}
+        {categoryLabels}
 
       </fieldset>
       <section className = 'searchbar'>

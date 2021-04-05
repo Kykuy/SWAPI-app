@@ -49,6 +49,16 @@ body {
   cursor: pointer;
 }
 
+.categoryLabels {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.categoryLabels span {
+  margin-left: 5px;
+}
+
 .datatypeInput {
   position: relative;
   appearance: none;
