@@ -234,7 +234,7 @@ body {
 .modal-container {
   position: relative;
   background-color: whitesmoke;
-  min-width: 500px;
+  width: 500px;
   color: black;
 }
 
@@ -305,15 +305,29 @@ body {
   .searchInputLabel {
     display: block;
     font-size: 1.25rem;
+  }  
+}
+
+@media screen and (max-width: 500px) {
+  .modal-container {
+    width: calc(100% - 5px);
   }
 
-  @media screen and (max-width: 320px) {
-    :root {
-      font-size: 12px;
-    }
+  .close-modal-btn {
+    top: -2.2rem;
+  }
+}
 
-    .searchBtn {
-      padding: 6px 5px;
-    }
+@media screen and (max-width: 320px) {
+  :root {
+    font-size: 12px;
+  }
+
+  .searchBtn {
+    padding: 6px 5px;
+  }
+
+  .close-modal-btn {
+    top: -2.5rem
   }
 }
