@@ -82,6 +82,45 @@
   box-shadow: 1px 1px 8px 2px rgb(102 175 233 / 60%);
 }
 
+.tooltipBlock {
+  display: inline-block;
+  position: relative;
+}
+
+.wrongPageTooltip {
+  display: inline-block;
+  width: 120px;
+  background-color: gray;
+  color: #fff;
+  text-align: center;
+  border-radius: 1px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 0%; 
+}
+
+.wrongPageTooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 20%;
+  transform: skewX(-30deg);  
+  border-width: 8px;
+  border-style: solid;
+  border-color: gray transparent transparent transparent;
+}
+
+.wrongPageFocus:focus {
+  border-color: #e65a47;
+  box-shadow: 1px 1px 8px 2px rgb(255 105 102 / 60%);
+}
+
+.hidden {
+  display: none;
+}
+
 .resultsNumber {
   width: 100%;
   margin-top: 10px;

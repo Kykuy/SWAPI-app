@@ -5,6 +5,8 @@ function Pagination(props) {
 
   const resultsNumber = props.isSearching && props.data.length < 1 ? <section className = 'output'><p>No matches found</p></section> : <p className = 'resultsNumber'>Showing {`${1 + (props.pageSelected - 1) * props.itemsPerPage}`}-{`${(props.pageSelected - 1) * props.itemsPerPage + props.pages[props.pageSelected]?.length}`} of {`${props.data?.length}`} items</p>;
 
+  const wrongPageNumber = <div className = 'hidden wrongPageTooltip'>Wrong page number</div>;
+
   const pages = props.isSearching && props.data.length < 1 ? <>{resultsNumber}</> :
    <section className = 'pagination'>      
     <div className = 'pages'>
@@ -63,20 +65,46 @@ function Pagination(props) {
     </div>
 
     <label className = 'pageToJumpLabel' htmlFor = 'pageToJump'>Jump to page:</label>
-    <input className = 'pageToJumpInput' id = 'pageToJump' name = 'pageToJump' type = 'number' min = '1' max = {Object.keys(props.pages).length} onChange = {(event) => {
-      if (event.target.value < 0) {
-        event.target.value = event.target.min;          
-      } else if (event.target.value > parseInt(event.target.max, 10)) {
-        event.target.value = event.target.max;
-      }
-      setPageToJumpTo(parseInt(event.target.value, 10));
-    }}
+    <div className = 'tooltipBlock'>
+      <input className = 'pageToJumpInput' id = 'pageToJump' name = 'pageToJump' type = 'number' min = '1' max = {Object.keys(props.pages).length}
+      
+       onChange = {(event) => {
+        if (event.target.value < 0) {
+          event.target.value = event.target.min;
+        } else if (event.target.value > parseInt(event.target.max, 10)) {
+          event.target.value = event.target.max;
+        }
+
+        let tooltip = document.querySelector('.wrongPageTooltip');
+        let input = document.querySelector('.pageToJumpInput');;
+
+        if (!tooltip.classList.contains('hidden')) {
+          tooltip.classList.add('hidden');
+          input.classList.remove('wrongPageFocus');
+        }
+
+        setPageToJumpTo(parseInt(event.target.value, 10));
+      }}
+
       onKeyPress = {(event) => {
-        if (event.key === 'Enter') {
-          props.setPageSelected(pageToJumpTo);
+        if (event.key === 'Enter' && pageToJumpTo > 0) {
+          props.setPageSelected(pageToJumpTo);            
+        } else if (event.key === 'Enter' && pageToJumpTo < 1) {            
+          let tooltip = document.querySelector('.wrongPageTooltip');
+          let input = document.querySelector('.pageToJumpInput');
+
+          tooltip.classList.remove('hidden');
+          input.classList.add('wrongPageFocus');
+
+          setTimeout(() => {
+            tooltip.classList.add('hidden');
+            input.classList.remove('wrongPageFocus');
+          }, 3000)
         }
       }}
-    ></input>
+      ></input>
+      {wrongPageNumber}
+    </div>
     <button disabled = {pageToJumpTo < 1} onClick = {(event) => {
       props.setPageSelected(pageToJumpTo);
     }}
