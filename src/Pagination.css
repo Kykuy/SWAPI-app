@@ -1,0 +1,145 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 70%;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;  
+}
+
+.pageToJumpInput,
+.pagination button,
+.itemsPerPageSelect {
+  min-height: 31px;
+}
+
+.pagination button {
+  display: inline-block;
+  padding: 1px 4px;
+  background-color: #7a8288; 
+  color: #c8c8c8;
+  font-size: 1.25rem;
+  border-width: 3px;
+  border-color: #62686d;
+  box-shadow: none;
+  border-style: solid;
+  transition: 0.2s all ease-in-out; 
+}
+
+.pagination button:hover {
+  background-color: #62686d;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #62686d;
+  cursor: not-allowed;
+  opacity: 0.66;  
+}
+
+.pages {
+  min-width: 200px;
+  max-width: 250px;  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  
+}
+
+/* .pages :is(button:not(:first-of-type), span) {
+  margin-left: 5px;
+} */
+
+/* .pages button:first-of-type {
+  margin-right: auto;
+}
+
+.pages button:last-of-type {
+  margin-left: auto;
+} */
+
+.pageToJumpLabel {
+  margin-left: 5px;
+}
+
+.itemsPerPageLabel {
+  margin-left: auto;
+}
+
+.pageToJumpInput,
+.itemsPerPageSelect {
+  text-align: center;
+  margin-left: 2px;
+  max-width: 40px;
+}
+
+.pageToJumpInput:focus,
+.itemsPerPageSelect:focus {
+  border-color: #66afe9;
+  border-width: 1px;
+  outline: 0;
+  box-shadow: 1px 1px 8px 2px rgb(102 175 233 / 60%);
+}
+
+.resultsNumber {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1100px) and (min-width: 760px) {
+  .pagination {
+    max-width: 80%;
+  }  
+}
+
+@media screen and (max-width: 890px) and (min-width: 760px) {
+  .itemsPerPageLabel {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .pagination {
+    max-width: 100%;
+    padding: 5px;
+  }
+
+  .pages {
+    min-width: 170px;
+    max-width: 170px;
+  }
+
+  .pageToJumpLabel {
+    margin-left: auto;
+  }
+
+  .itemsPerPageLabel {
+    margin-left: 0;
+  }
+
+  .itemsPerPageLabel,
+  .itemsPerPageSelect {
+    margin-top: 5px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .pageToJumpInput,
+  .pagination button,
+  .itemsPerPageSelect {
+    min-height: 22px;
+  }
+
+  .pages {
+    min-width: 140px;
+    max-width: 140px;    
+  }
+
+  .pagination button {
+    padding: 0px 3px;
+    border-width: 2px;
+    font-size: 1.2rem;        
+  }
+}

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
+import './Pagination.css';
 import Searchbar from "./Searchbar.js";
 import Pagination from "./Pagination.js";
 import Output from './Output.js';
@@ -7,6 +8,7 @@ import Output from './Output.js';
 function App() {
   const [data, setData] = useState([]);
   const [searchData, setSearchData] = useState([]);
+  const [speciesNames, setSpeciesNames] = useState({});
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);   
   const [isSearching, setIsSearching] = useState(false);
@@ -50,7 +52,43 @@ function App() {
   // }, [fetchUrl, data.count]); 
 
   useEffect(() => {
-    async function getData(url) {    
+    async function getSpeciesNames() {
+
+      try {
+        let speciesDictionary = {};
+        let total = [];
+
+        let response = await fetch(`https://swapi.py4e.com/api/species/`);
+        let data = await response.json();    
+        total = total.concat(data.results);
+  
+        while(data.next) {      
+          if (data.next === null) {
+            break;
+          } else {
+            data = await fetch(data.next);
+            data = await data.json();        
+            total = total.concat(data.results);
+          }        
+        }
+        
+        for (let entry of total) {
+          speciesDictionary[entry.url] = entry.name;
+        }        
+
+        setSpeciesNames(speciesDictionary);
+
+      } catch(error) {
+        setError(error);
+      }
+    }
+    
+    getSpeciesNames();
+  }, [])
+  
+  useEffect(() => {
+    async function getData(url) {
+        
       try {
         let total = [];
   
@@ -105,19 +143,19 @@ function App() {
   if (error) {
     return <div>Error: {error.message}</div>
   } else if (isLoading) {
-    return <div>Loading... Please wait.</div>
+    return <div className = 'modal-window'>Loading... Please wait.</div>
   } else {
     return (
-      <>
-      <header>
-        <h1>Starting...</h1>
-      </header>
-      <main>
-        <Searchbar searchData = {searchData} setData = {setData} isSearching = {isSearching} setIsSearching = {setIsSearching} selected = {selectedDataType} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} />
-        <Pagination data = {data} pages = {pages} pageSelected = {pageSelected} setPageSelected = {setPageSelected} itemsPerPage = {itemsPerPage} setItemsPerPage = {setItemsPerPage} isSearching = {isSearching} />
-        <Output data = {data} selectedDataType = {selectedDataType}  pages = {pages} pageSelected = {pageSelected} />
-      </main>
-      </>
+      <div className = 'wrapper'>
+        <header>
+          <h1 className = 'title'>SWAPIapp</h1>
+        </header>
+        <main>
+          <Searchbar searchData = {searchData} setData = {setData} isSearching = {isSearching} setIsSearching = {setIsSearching} selected = {selectedDataType} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} />
+          <Pagination data = {data} pages = {pages} pageSelected = {pageSelected} setPageSelected = {setPageSelected} itemsPerPage = {itemsPerPage} setItemsPerPage = {setItemsPerPage} isSearching = {isSearching} />
+          <Output data = {data} speciesNames = {speciesNames} selectedDataType = {selectedDataType}  pages = {pages} pageSelected = {pageSelected} />
+        </main>
+      </div>
     );
   }  
 

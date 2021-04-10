@@ -1,4 +1,227 @@
-.modal {
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #2a2e33;  
+  color: #c8c8c8;
+}
+
+.wrapper {
+  margin: 0 auto;
+  background-color: #1c1e22;
+  border: 1px solid black;
+  max-width: 100%;
+  min-height: 100vh;
+}
+
+.title {
+  color: #ffe300;
+  font-size: 4rem;
+  font-family: Helvetica, sans-serif;
+  font-weight: 400;
+  text-align: center;
+}
+
+.selectForm {
+  max-width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.selectForm fieldset {
+  text-align: center;
+}
+
+.selectFormLegend {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #ffe300;
+  font-family: Helvetica, sans-serif;
+}
+
+.selectForm fieldset :is(label, input) {  
+  cursor: pointer;
+}
+
+.categoryLabels {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.categoryLabels span {
+  margin-left: 5px;
+}
+
+.datatypeInput {
+  position: relative;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;      
+  border: 2px solid wheat;
+  border-radius: 50%;
+  transition: 0.3s border linear;  
+}
+
+.datatypeInput:checked {
+  box-shadow: 0px 0px 5px #ffe300;
+}
+
+.datatypeInput:checked + .datatypeLabel {
+  font-weight: 600;  
+  text-decoration: underline;
+}
+
+.datatypeInput:checked::before {
+  position: absolute;
+  top: -5px;
+  left: -1px;
+  content: '|';
+  font-size: 12px;
+  font-weight: 900;
+  transform: skewX(36deg);
+  color: wheat;  
+}
+
+.datatypeInput:checked::after {
+  position: absolute;
+  top: -11px;
+  right: -1px;
+  content: '|';
+  font-size: 16px;
+  font-weight: 900;
+  transform: skewX(-31deg);
+  color: wheat;  
+} 
+
+.datatypeInput:nth-of-type(4):checked::after {
+  right: -2px;
+}
+
+.datatypeInput:not(:first-of-type),
+.datatypeLabel,
+.searchInput {
+  margin-left: 5px;
+}
+
+.datatypeLabel {
+  display: inline-block;     
+  vertical-align: 0.1em;
+}
+
+.searchbar,
+.pagination {
+  margin-top: 8px;
+}
+
+.searchInput {
+  height: 34px;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  transition: 0.25s all ease-in-out;
+}
+
+.searchInput:focus {
+  border-color: #66afe9;
+  outline: 0;
+  box-shadow: 1px 1px 8px 2px rgb(102 175 233 / 60%);
+}
+
+.searchInput:disabled {
+  background-color: rgb(255, 255, 255);
+  cursor: not-allowed;
+  opacity: 0.66;
+}
+
+.searchInputLabel {
+  color: white;
+}
+
+.searchBtn, .cancelSearchBtn {
+  height: 36px;
+  padding: 6px 10px;
+  margin-left: -1px;
+  color: white;
+  background: linear-gradient(#8a9196, #7a8288 60%, #70787d);
+  border-color: rgba(0,0,0,0.6);
+  border-width: 1px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;  
+}
+
+/* .searchBtn:only-of-type {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+} */
+
+.searchBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.66;
+}
+
+.searchBtn:not([disabled]):hover, .cancelSearchBtn:hover {
+  cursor: pointer;
+  background-image: linear-gradient(#404448, #4e5458 40%, #585e62);
+}
+
+.output {
+  max-width: calc(70% + 10px);
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;  
+}
+
+.outputEntry {  
+  margin: 5px;
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 80px;
+  background-color: #55595f;  
+  flex: 1 0 calc(33.33% - 10px);
+  max-width: calc(33.33% - 10px);
+  justify-content: center;
+  align-items: center;
+  transition: all 0.1s ease-out;
+  box-shadow: 0 0 0.1px transparent;
+  -webkit-font-smoothing: antialiased;  
+}
+
+/* .outputEntry:not(:nth-of-type(3n+1)) {
+  margin-left: 5px;
+} */
+
+/* .outputEntry:last-of-type {
+  flex-basis: 26%;
+  flex-grow: 1;    
+} */
+
+.outputEntry:hover {
+  cursor: pointer;
+  background-color: #62686d;
+  transform: scale(1.02);
+  box-shadow: 0 0 3px 0.5px wheat;   
+}
+
+.outputEntry:hover .entryName {
+  text-decoration: underline;
+}
+
+.entryName {
+  font-weight: bold;
+}
+
+.entryType {
+  text-align: center;
+}
+
+.modal-window {
   background-color: rgba(0,0,0,0.5);
   position: fixed;
   height: 100%;
@@ -9,4 +232,113 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.modal-container {
+  position: relative;
+  background-color: whitesmoke;
+  width: 500px;
+  color: black;
+}
+
+.modal-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 5px;  
+}
+
+.modal-row:nth-child(2n) {
+  background-color: #e1e4e4;
+}
+
+.modal-row p {
+  max-width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   
+  text-align: right;
+} 
+
+.close-modal-btn {
+  position: absolute;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 900;  
+  padding: 3px;
+  top: -2rem;
+  right: 0;
+}
+
+@media screen and (max-width: 1100px) and (min-width: 760px) {
+  .selectForm {
+    max-width: 80%;
+  }
+  
+  .output {
+    max-width: calc(80% + 10px);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .wrapper {
+    max-width: 60%;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  :root {
+    font-size: 14px;
+  }
+
+  .selectForm,
+  .output
+  {
+    max-width: 100%;
+  }
+
+  .selectForm {
+    padding: 0 5px;
+  }
+
+  .outputEntry {
+    flex-basis: 34%;
+    max-width: 100%;
+  }
+
+  .searchInputLabel {
+    display: block;
+    font-size: 1.25rem;
+  }
+  
+  .cancelSearchBtn {
+    margin-top: 3px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .modal-container {
+    width: calc(100% - 5px);
+  }
+
+  .close-modal-btn {
+    top: -2.2rem;
+  }
+
+  .searchInput {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  :root {
+    font-size: 12px;
+  }
+
+  .searchBtn {
+    padding: 6px 5px;
+  }
+
+  .close-modal-btn {
+    top: -2.5rem
+  }
 }
