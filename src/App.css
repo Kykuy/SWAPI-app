@@ -14,6 +14,8 @@ body {
 
 .wrapper {
   margin: 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
   background-color: #1c1e22;
   border: 1px solid black;
   max-width: 100%;
@@ -267,6 +269,27 @@ body {
   padding: 3px;
   top: -2rem;
   right: 0;
+}
+
+.footer {
+  margin-top: auto;
+  text-align: center;
+  padding-bottom: 5px;
+  background-color: #2a2e33;
+}
+
+.footerLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footerLink p {
+  display: inline-block;
+}
+
+.footerLink:hover p {
+  text-decoration: underline;
+  color: #ffe300;
 }
 
 @media screen and (max-width: 1100px) and (min-width: 760px) {

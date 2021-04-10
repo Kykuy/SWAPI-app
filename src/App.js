@@ -155,6 +155,11 @@ function App() {
           <Pagination data = {data} pages = {pages} pageSelected = {pageSelected} setPageSelected = {setPageSelected} itemsPerPage = {itemsPerPage} setItemsPerPage = {setItemsPerPage} isSearching = {isSearching} />
           <Output data = {data} speciesNames = {speciesNames} selectedDataType = {selectedDataType}  pages = {pages} pageSelected = {pageSelected} />
         </main>
+        <footer className = 'footer'>
+          <a href = 'https://swapi.py4e.com/' className = 'footerLink'>
+            <p>Powered by <span>SWAPI</span></p>
+          </a>
+        </footer>
       </div>
     );
   }  
