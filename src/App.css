@@ -325,7 +325,7 @@ body {
 
   .outputEntry {
     flex-basis: 34%;
-    max-width: 100%;
+    max-width: calc(50% - 10px);
   }
 
   .searchInputLabel {

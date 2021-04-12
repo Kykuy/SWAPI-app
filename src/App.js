@@ -17,6 +17,8 @@ function App() {
   const [pages, setPages] = useState({});
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [pageSelected, setPageSelected] = useState(1);
+
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);  
   // useEffect(() => {
   //   fetch(fetchUrl)
   //     .then(response => response.json())           
@@ -133,6 +135,15 @@ function App() {
 
     createPages(data, itemsPerPage);
   }, [data, itemsPerPage])
+
+  useEffect(() => {
+    function handleResize() {
+      setScreenWidth(window.innerWidth);
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [])
   
   console.log('data', data);
 
@@ -151,8 +162,8 @@ function App() {
           <h1 className = 'title'>SWAPIapp</h1>
         </header>
         <main>
-          <Searchbar searchData = {searchData} setData = {setData} isSearching = {isSearching} setIsSearching = {setIsSearching} selected = {selectedDataType} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} />
-          <Pagination data = {data} pages = {pages} pageSelected = {pageSelected} setPageSelected = {setPageSelected} itemsPerPage = {itemsPerPage} setItemsPerPage = {setItemsPerPage} isSearching = {isSearching} />
+          <Searchbar searchData = {searchData} setData = {setData} screenWidth = {screenWidth} isSearching = {isSearching} setIsSearching = {setIsSearching} selected = {selectedDataType} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} />
+          <Pagination data = {data} pages = {pages} screenWidth = {screenWidth} pageSelected = {pageSelected} setPageSelected = {setPageSelected} itemsPerPage = {itemsPerPage} setItemsPerPage = {setItemsPerPage} isSearching = {isSearching} />
           <Output data = {data} speciesNames = {speciesNames} selectedDataType = {selectedDataType}  pages = {pages} pageSelected = {pageSelected} />
         </main>
         <footer className = 'footer'>

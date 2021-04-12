@@ -143,6 +143,7 @@
   .pagination {
     max-width: 100%;
     padding: 5px;
+    margin-top: 5px;
   }
 
   .pages {
@@ -167,8 +168,9 @@
 @media screen and (max-width: 360px) {
   .pageToJumpInput,
   .pagination button,
-  .itemsPerPageSelect {
-    min-height: 22px;
+  .itemsPerPageSelect,
+  .pageSelect {
+    min-height: 24px;
   }
 
   .pages {
@@ -180,5 +182,29 @@
     padding: 0px 3px;
     border-width: 2px;
     font-size: 1.2rem;        
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .pages {
+    width: auto;
+    min-width: fit-content;
+    max-width: none;
+  }
+
+  .pageSelect {
+    background-color: #404549;
+    color: wheat;
+    border-color: #62686d;
+  }
+
+  .pageSelect:focus {
+    border-color: #66afe9;    
+    outline: 0;
+    box-shadow: 1px 1px 8px 2px rgb(102 175 233 / 60%);
+  }
+
+  .pageSelect option {
+    background-color: #62686d;
   }
 }

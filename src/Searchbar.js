@@ -2,21 +2,11 @@ import React, {useState, useEffect, Fragment } from 'react';
 
 function Searchbar(props) {
   const [searchInput, setSearchInput] = useState('');
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);  
 
   const datatypes = ['People', 'Vehicles', 'Starships', 'Planets', 'Species', 'Films'];
 
-  const {searchData} = props;
+  const {searchData, screenWidth} = props;
 
-  useEffect(() => {
-    function handleResize() {
-      setScreenWidth(window.innerWidth);
-    }
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [])
- 
   const categoryLabels = screenWidth > 425 ?
 
    datatypes.map(datatype => {

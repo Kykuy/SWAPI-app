@@ -7,6 +7,53 @@ function Pagination(props) {
 
   const wrongPageNumber = <div className = 'hidden wrongPageTooltip'>Wrong page number</div>;
 
+  const pageButtons = props.screenWidth > 300 ? Object.keys(props.pages).flatMap((page, index, array) => {
+    return parseInt(page, 10) === 1 || parseInt(page, 10) === props.pageSelected || parseInt(page, 10) === parseInt(array[array.length - 1], 10) ?
+    
+    (
+      <button disabled = {parseInt(page, 10) === props.pageSelected} key = {`page #${page}`} onClick = {(event) => {
+        props.setPageSelected(parseInt(page, 10));
+      }
+      }>{page}</button>
+    ) : Math.abs(parseInt(page, 10) - props.pageSelected) === 1 ?
+
+      parseInt(page, 10) - 1 > 1 && props.pageSelected - parseInt(page, 10) === 1 ?
+
+      (
+        <Fragment key = {`page #${page}`}>
+        <span>...</span>
+        <button onClick = {(event) => {
+          props.setPageSelected(parseInt(page, 10));
+        }
+        }>{page}</button>
+        </Fragment>
+      ) : parseInt(array[array.length - 1], 10) - parseInt(page, 10) > 1 && props.pageSelected - parseInt(page, 10) !== 1 ?
+
+        (
+          <Fragment key = {`page #${page}`}>          
+          <button key = {`page #${page}`} onClick = {(event) => {
+            props.setPageSelected(parseInt(page, 10));
+          }
+          }>{page}</button>
+          <span>...</span>
+          </Fragment>
+        ) :
+
+        (
+          <button key = {`page #${page}`} onClick = {(event) => {
+            props.setPageSelected(parseInt(page, 10));
+          }
+          }>{page}</button>
+
+    ) : [];
+  }) :
+
+    <select className = 'pageSelect' value = {props.pageSelected} onChange = {(event) => props.setPageSelected(parseInt(event.target.value, 10))}>
+      {Object.keys(props.pages).map(page => {
+        return <option value = {page}>{page}</option>
+      })}
+    </select>;
+
   const pages = props.isSearching && props.data.length < 1 ? <>{resultsNumber}</> :
    <section className = 'pagination'>      
     <div className = 'pages'>
@@ -16,46 +63,7 @@ function Pagination(props) {
         }
       }}>&lt;</button>
 
-      {Object.keys(props.pages).flatMap((page, index, array) => {
-        return parseInt(page, 10) === 1 || parseInt(page, 10) === props.pageSelected || parseInt(page, 10) === parseInt(array[array.length - 1], 10) ?
-        
-        (
-          <button disabled = {parseInt(page, 10) === props.pageSelected} key = {`page #${page}`} onClick = {(event) => {
-            props.setPageSelected(parseInt(page, 10));
-          }
-          }>{page}</button>
-        ) : Math.abs(parseInt(page, 10) - props.pageSelected) === 1 ?
-
-          parseInt(page, 10) - 1 > 1 && props.pageSelected - parseInt(page, 10) === 1 ?
-
-          (
-            <Fragment key = {`page #${page}`}>
-            <span>...</span>
-            <button onClick = {(event) => {
-              props.setPageSelected(parseInt(page, 10));
-            }
-            }>{page}</button>
-            </Fragment>
-          ) : parseInt(array[array.length - 1], 10) - parseInt(page, 10) > 1 && props.pageSelected - parseInt(page, 10) !== 1 ?
-
-            (
-              <Fragment key = {`page #${page}`}>          
-              <button key = {`page #${page}`} onClick = {(event) => {
-                props.setPageSelected(parseInt(page, 10));
-              }
-              }>{page}</button>
-              <span>...</span>
-              </Fragment>
-            ) :
-
-            (
-              <button key = {`page #${page}`} onClick = {(event) => {
-                props.setPageSelected(parseInt(page, 10));
-              }
-              }>{page}</button>
-
-        ) : [];
-      })}
+      {pageButtons}
 
       <button disabled = {props.pageSelected === parseInt(Object.keys(props.pages)[Object.keys(props.pages).length - 1], 10)} onClick = {(event) => {
         if (props.pageSelected < Object.keys(props.pages)[Object.keys(props.pages).length - 1]) {
