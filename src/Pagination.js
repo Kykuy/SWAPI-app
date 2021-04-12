@@ -1,7 +1,7 @@
 import React, {useState, useEffect, Fragment} from 'react';
 
 function Pagination(props) {
-  const [pageToJumpTo, setPageToJumpTo] = useState(1);
+  const [pageToJumpTo, setPageToJumpTo] = useState(NaN);
 
   const resultsNumber = props.isSearching && props.data.length < 1 ? <section className = 'output'><p>No matches found</p></section> : <p className = 'resultsNumber'>Showing {`${1 + (props.pageSelected - 1) * props.itemsPerPage}`}-{`${(props.pageSelected - 1) * props.itemsPerPage + props.pages[props.pageSelected]?.length}`} of {`${props.data?.length}`} items</p>;
 
@@ -113,7 +113,7 @@ function Pagination(props) {
       ></input>
       {wrongPageNumber}
     </div>
-    <button disabled = {pageToJumpTo < 1} onClick = {(event) => {
+    <button disabled = {pageToJumpTo < 1 || isNaN(pageToJumpTo)} onClick = {(event) => {
       props.setPageSelected(pageToJumpTo);
     }}
     >Jump</button>
