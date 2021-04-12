@@ -10,7 +10,7 @@ function Pagination(props) {
   const pages = props.isSearching && props.data.length < 1 ? <>{resultsNumber}</> :
    <section className = 'pagination'>      
     <div className = 'pages'>
-      <button onClick = {(event) => {
+      <button disabled = {props.pageSelected <= 1} onClick = {(event) => {
         if (props.pageSelected > 1) {
           props.setPageSelected(prevPageSelected => prevPageSelected - 1);
         }
@@ -57,7 +57,7 @@ function Pagination(props) {
         ) : [];
       })}
 
-      <button onClick = {(event) => {
+      <button disabled = {props.pageSelected === parseInt(Object.keys(props.pages)[Object.keys(props.pages).length - 1], 10)} onClick = {(event) => {
         if (props.pageSelected < Object.keys(props.pages)[Object.keys(props.pages).length - 1]) {
           props.setPageSelected(prevPageSelected => prevPageSelected + 1);
         }
