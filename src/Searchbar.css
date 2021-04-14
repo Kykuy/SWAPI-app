@@ -1,0 +1,142 @@
+.selectForm {
+  max-width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.selectForm fieldset {
+  text-align: center;
+}
+
+.selectFormLegend {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #ffe300;
+  font-family: Helvetica, sans-serif;
+}
+
+.selectForm fieldset :is(label, input) {  
+  cursor: pointer;
+}
+
+.categoryLabels {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.categoryLabels span {
+  margin-left: 5px;
+}
+
+.datatypeInput {
+  position: relative;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;      
+  border: 2px solid wheat;
+  border-radius: 50%;
+  transition: 0.3s border linear;  
+}
+
+.datatypeInput:checked {
+  box-shadow: 0px 0px 5px #ffe300;
+}
+
+.datatypeInput:checked + .datatypeLabel {
+  font-weight: 600;  
+  text-decoration: underline;
+}
+
+.datatypeInput:checked::before {
+  position: absolute;
+  top: -5px;
+  left: -1px;
+  content: '|';
+  font-size: 12px;
+  font-weight: 900;
+  transform: skewX(36deg);
+  color: wheat;  
+}
+
+.datatypeInput:checked::after {
+  position: absolute;
+  top: -11px;
+  right: -1px;
+  content: '|';
+  font-size: 16px;
+  font-weight: 900;
+  transform: skewX(-31deg);
+  color: wheat;  
+} 
+
+.datatypeInput:nth-of-type(4):checked::after {
+  right: -2px;
+}
+
+.datatypeInput:not(:first-of-type),
+.datatypeLabel,
+.searchInput {
+  margin-left: 5px;
+}
+
+.datatypeLabel {
+  display: inline-block;     
+  vertical-align: 0.1em;
+}
+
+.searchbar,
+.pagination {
+  margin-top: 8px;
+}
+
+.searchInput {
+  height: 34px;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  transition: 0.25s all ease-in-out;
+}
+
+.searchInput:focus {
+  border-color: #66afe9;
+  outline: 0;
+  box-shadow: 1px 1px 8px 2px rgb(102 175 233 / 60%);
+}
+
+.searchInput:disabled {
+  background-color: rgb(255, 255, 255);
+  cursor: not-allowed;
+  opacity: 0.66;
+}
+
+.searchInputLabel {
+  color: white;
+}
+
+.searchBtn, .cancelSearchBtn {
+  height: 36px;
+  padding: 6px 10px;
+  margin-left: -1px;
+  color: white;
+  background: linear-gradient(#8a9196, #7a8288 60%, #70787d);
+  border-color: rgba(0,0,0,0.6);
+  border-width: 1px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;  
+}
+
+/* .searchBtn:only-of-type {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+} */
+
+.searchBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.66;
+}
+
+.searchBtn:not([disabled]):hover, .cancelSearchBtn:hover {
+  cursor: pointer;
+  background-image: linear-gradient(#404448, #4e5458 40%, #585e62);
+}

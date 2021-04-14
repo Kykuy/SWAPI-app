@@ -1,0 +1,47 @@
+.modal-window {
+  background-color: rgba(0,0,0,0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-container {
+  position: relative;
+  background-color: whitesmoke;
+  width: 500px;
+  color: black;
+}
+
+.modal-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 5px;  
+}
+
+.modal-row:nth-child(2n) {
+  background-color: #e1e4e4;
+}
+
+.modal-row p {
+  max-width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   
+  text-align: right;
+} 
+
+.close-modal-btn {
+  position: absolute;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 900;  
+  padding: 3px;
+  top: -2rem;
+  right: 0;
+}
