@@ -97,7 +97,7 @@ function Pagination(props) {
       onKeyPress = {(event) => {
         if (event.key === 'Enter' && pageToJumpTo > 0) {
           props.setPageSelected(pageToJumpTo);            
-        } else if (event.key === 'Enter' && pageToJumpTo < 1) {            
+        } else if (event.key === 'Enter' && (pageToJumpTo < 1 || isNaN(pageToJumpTo) || pageToJumpTo === undefined)) {            
           let tooltip = document.querySelector('.wrongPageTooltip');
           let input = document.querySelector('.pageToJumpInput');
 
