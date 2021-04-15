@@ -47,3 +47,20 @@
 .entryType {
   text-align: center;
 }
+
+@media screen and (max-width: 1100px) and (min-width: 760px) {  
+  .output {
+    max-width: calc(80% + 10px);
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .output {
+    max-width: 100%;
+  }  
+
+  .outputEntry {
+    flex-basis: 34%;
+    max-width: calc(50% - 10px);
+  }  
+}

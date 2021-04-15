@@ -51,16 +51,6 @@ body {
   color: #ffe300;
 }
 
-@media screen and (max-width: 1100px) and (min-width: 760px) {
-  .selectForm {
-    max-width: 80%;
-  }
-  
-  .output {
-    max-width: calc(80% + 10px);
-  }
-}
-
 @media screen and (min-width: 1440px) {
   .wrapper {
     max-width: 60%;
@@ -70,57 +60,11 @@ body {
 @media screen and (max-width: 720px) {
   :root {
     font-size: 14px;
-  }
-
-  .selectForm,
-  .output
-  {
-    max-width: 100%;
-  }
-
-  .selectForm {
-    padding: 0 5px;
-  }
-
-  .outputEntry {
-    flex-basis: 34%;
-    max-width: calc(50% - 10px);
-  }
-
-  .searchInputLabel {
-    display: block;
-    font-size: 1.25rem;
-  }
-  
-  .cancelSearchBtn {
-    margin-top: 3px;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .modal-container {
-    width: calc(100% - 5px);
-  }
-
-  .close-modal-btn {
-    top: -2.2rem;
-  }
-
-  .searchInput {
-    margin-left: 0;
-  }
+  }  
 }
 
 @media screen and (max-width: 320px) {
   :root {
     font-size: 12px;
-  }
-
-  .searchBtn {
-    padding: 6px 5px;
-  }
-
-  .close-modal-btn {
-    top: -2.5rem
-  }
+  }  
 }
