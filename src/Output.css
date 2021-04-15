@@ -40,6 +40,10 @@
   text-decoration: underline;
 }
 
+.outputEntry:active {
+  transform: scale(0.97);
+}
+
 .entryName {
   font-weight: bold;
 }

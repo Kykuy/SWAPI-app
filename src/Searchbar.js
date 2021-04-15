@@ -112,9 +112,9 @@ function Searchbar(props) {
 
       </fieldset>
       <section className = 'searchbar'>
-        <label htmlFor = 'search-input' className = 'searchInputLabel'>Search for Star Wars Data!</label>
+        <label htmlFor = 'search-input' className = 'searchInputLabel'>Search for Star Wars data!</label>
         <input list = 'searchList' className = 'searchInput' type = 'search' value = {searchInput} id = 'search-input' size = '24' disabled = {props.selected === 'films'}
-          placeholder = {props.selected === 'films' ? 'Searching is disabled for films' : 'Start typing to find data. SW data.'}
+          placeholder = {props.selected === 'films' ? 'Searching is disabled for films' : 'Start typing to find data'}
           onChange = {(event) => setSearchInput(event.target.value)}
           onKeyDown = {(event) => event.key === 'Enter' ? startSearch() : null}
         ></input>
