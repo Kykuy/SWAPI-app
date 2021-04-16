@@ -50,7 +50,7 @@ function Pagination(props) {
 
     <select className = 'pageSelect' value = {props.pageSelected} onChange = {(event) => props.setPageSelected(parseInt(event.target.value, 10))}>
       {Object.keys(props.pages).map(page => {
-        return <option value = {page}>{page}</option>
+        return <option key = {page} value = {page}>{page}</option>
       })}
     </select>;
 
