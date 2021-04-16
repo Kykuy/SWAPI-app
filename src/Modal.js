@@ -164,8 +164,8 @@ function Modal(props) {
                   <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')}</p>
                 </article>
               ) : (
-                <article className = 'modal-row' key = {key}>
-                  <p>{makeStringReadable(key)}:</p><p> {makeStringReadable(value)}</p>
+                <article className = 'modal-row' key = {key}>                  
+                  <p>{makeStringReadable(key)}</p><p>{value}</p>
                 </article>
               );
             default:
