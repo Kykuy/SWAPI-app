@@ -157,7 +157,24 @@ function App() {
   if (error) {
     return <div>Error: {error.message}</div>
   } else if (isLoading) {
-    return <div className = 'modal-window'>Loading... Please wait.</div>
+    // return <div className = 'modal-window'>Loading... Please wait.</div>
+    return (
+      <div className = 'wrapper'>
+        <header>
+          <h1 className = 'title'>SWAPIapp</h1>
+        </header>
+        <main>
+          <Searchbar searchData = {searchData} setData = {setData} screenWidth = {screenWidth} isSearching = {isSearching} setIsSearching = {setIsSearching} selected = {selectedDataType} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} />                   
+        </main>
+        <div class="loading-ring"><div></div><div></div><div></div><div></div>
+        </div> 
+        <footer className = 'footer'>
+          <a href = 'https://swapi.py4e.com/' className = 'footerLink'>
+            <p>Powered by <span>SWAPI</span></p>
+          </a>
+        </footer>
+      </div>
+    )
   } else {
     return (
       <div className = 'wrapper'>
