@@ -56,7 +56,7 @@ function Modal(props) {
 
   const modal = isModalLoading ? <p className = 'modal-window'>Loading...</p> :
   <section className = 'modal-window'>          
-    <div className = 'modal-container'>
+    <div className = {`modal-container${props.selectedDataType === 'films' ? ' modal-container-film' : ''}`}>
       <button className = 'close-modal-btn' onClick = {(event) => props.setShowModal(false)}>X</button>
       {Object.entries(modalDataToDisplay)
         .filter(([key, value]) => (key !== 'created' && key !== 'edited' && key !== 'url') /*&& value?.length > 0*/)

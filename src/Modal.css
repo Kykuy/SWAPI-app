@@ -14,8 +14,13 @@
 .modal-container {
   position: relative;
   background-color: whitesmoke;
-  width: 500px;
+  min-width: 500px;
+  max-width: 500px;    
   color: black;
+}
+
+.modal-container-film {
+  max-width: 50vw;
 }
 
 .modal-row {
@@ -28,12 +33,28 @@
   background-color: #e1e4e4;
 }
 
-.modal-row p {
+.modal-row p:first-of-type {
+  max-width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   
+  text-align: left;
+} 
+
+.modal-row p:nth-of-type(2) {
   max-width: 65%;
   display: flex;
   flex-direction: column;
   justify-content: center;   
   text-align: right;
+}
+
+.modal-container-film .modal-row p:first-of-type {
+  max-width: 25%;  
+} 
+
+.modal-container-film .modal-row p:nth-of-type(2) {
+  max-width: 75%;  
 } 
 
 .close-modal-btn {
@@ -46,18 +67,38 @@
   right: 0;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1024px) {
+  .modal-container-film {    
+    max-height: 100vh;
+  }
+
+  .modal-container-film .close-modal-btn {
+    position: relative;           
+    left: calc(100% - 20px);
+  }
+}
+
+@media screen and (max-width: 540px) {
   .modal-container {
-    width: calc(100% - 5px);
+    min-width: calc(100% - 5px);
+    max-width: calc(100% - 5px);
+  }
+  
+  .modal-container-film {
+    overflow-y: scroll;
   }
 
   .close-modal-btn {
     top: -2.2rem;
+  }
+
+  .modal-container-film .close-modal-btn {
+    top: 0rem;
   }  
 }
 
 @media screen and (max-width: 320px) {
   .close-modal-btn {
-    top: -2.5rem
+    top: -2.5rem;
   }
 }
