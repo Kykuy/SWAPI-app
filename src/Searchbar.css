@@ -37,11 +37,39 @@
   font-size: 16px;      
   border: 2px solid wheat;
   border-radius: 50%;
-  transition: 0.3s border linear;  
+  transition: 0.2s all linear;  
 }
 
+.datatypeInput::before,
+.datatypeInput::after {  
+  opacity: 0;
+  transition: 0.25s all linear;
+}
+
+.datatypeInput::before {
+  position: absolute;    
+  content: '|';
+  top: -8px;
+  left: -7px;
+  font-size: 12px;
+  font-weight: 900;
+  transform: skewX(36deg);  
+  color: wheat;  
+}
+
+.datatypeInput::after {
+  position: absolute;  
+  top: -18px;
+  right: -7px;
+  content: '|';
+  font-size: 16px;
+  font-weight: 900;
+  transform: skewX(-31deg);  
+  color: wheat;  
+} 
+
 .datatypeInput:checked {
-  box-shadow: 0px 0px 5px #ffe300;
+  box-shadow: 0px 0px 5px #ffe300;  
 }
 
 .datatypeInput:checked + .datatypeLabel {
@@ -49,27 +77,20 @@
   text-decoration: underline;
 }
 
+.datatypeInput:checked::before,
+.datatypeInput:checked::after {
+  opacity: 1;  
+}
+
 .datatypeInput:checked::before {
-  position: absolute;
   top: -5px;
   left: -1px;
-  content: '|';
-  font-size: 12px;
-  font-weight: 900;
-  transform: skewX(36deg);
-  color: wheat;  
 }
 
 .datatypeInput:checked::after {
-  position: absolute;
   top: -11px;
   right: -1px;
-  content: '|';
-  font-size: 16px;
-  font-weight: 900;
-  transform: skewX(-31deg);
-  color: wheat;  
-} 
+}
 
 .datatypeInput:nth-of-type(4):checked::after {
   right: -2px;
