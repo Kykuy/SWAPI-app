@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import './Searchbar.css';
-import './Modal.css';
-import './Pagination.css';
+import '../Components/Searchbar.css';
+import '../Components/Modal.css';
+import '../Components/Pagination.css';
 import './Output.css';
-import Searchbar from "./Searchbar.js";
-import Pagination from "./Pagination.js";
+import Searchbar from "../Components/Searchbar.js";
+import Pagination from "../Components/Pagination.js";
 import Output from './Output.js';
 
 function App() {

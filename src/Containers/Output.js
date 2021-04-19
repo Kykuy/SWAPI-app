@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import Modal from './Modal.js';
-import {makeStringReadable} from './utils';
+import Modal from '../Components/Modal.js';
+import {makeStringReadable} from '../utils';
 
 const Output = (props) => { 
   const [showModal, setShowModal] = useState(false);

@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import ReactDOM from 'react-dom';
-import {makeStringReadable} from './utils';
+import {makeStringReadable} from '../utils';
 
 function Modal(props) {  
   const rootElementRef = useRef(document.createElement('article'));
