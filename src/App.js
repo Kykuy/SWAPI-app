@@ -164,7 +164,7 @@ function App() {
           <h1 className = 'title'>SWAPIapp</h1>
         </header>
         <main>
-          <Searchbar searchData = {searchData} setData = {setData} screenWidth = {screenWidth} isSearching = {isSearching} setIsSearching = {setIsSearching} selected = {selectedDataType} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} />                   
+          <Searchbar searchData = {searchData} setData = {setData} screenWidth = {screenWidth} isSearching = {isSearching} setIsSearching = {setIsSearching} selected = {selectedDataType} isLoading = {isLoading} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} />                   
         </main>
         <div class="loading-ring"><div></div><div></div><div></div><div></div>
         </div> 
@@ -182,7 +182,7 @@ function App() {
           <h1 className = 'title'>SWAPIapp</h1>
         </header>
         <main>
-          <Searchbar searchData = {searchData} setData = {setData} screenWidth = {screenWidth} isSearching = {isSearching} setIsSearching = {setIsSearching} selected = {selectedDataType} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} />
+          <Searchbar searchData = {searchData} setData = {setData} screenWidth = {screenWidth} isSearching = {isSearching} setIsSearching = {setIsSearching} selected = {selectedDataType} isLoading = {isLoading} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} />
           <Pagination data = {data} pages = {pages} screenWidth = {screenWidth} pageSelected = {pageSelected} setPageSelected = {setPageSelected} itemsPerPage = {itemsPerPage} setItemsPerPage = {setItemsPerPage} isSearching = {isSearching} />
           <Output data = {data} speciesNames = {speciesNames} selectedDataType = {selectedDataType}  pages = {pages} pageSelected = {pageSelected} />
         </main>

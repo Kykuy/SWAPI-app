@@ -20,7 +20,8 @@ function Searchbar(props) {
       props.setIsSearching(false);
       setSearchInput('');
     }
-    }></input>
+    }
+    disabled = {props.isLoading && props.selected !== datatype.toLowerCase()}></input>
     <label className = 'datatypeLabel' htmlFor = {datatype.toLowerCase()}>{datatype}</label>
     </Fragment>
    }) :
