@@ -20,15 +20,6 @@
   -webkit-font-smoothing: antialiased;  
 }
 
-/* .outputEntry:not(:nth-of-type(3n+1)) {
-  margin-left: 5px;
-} */
-
-/* .outputEntry:last-of-type {
-  flex-basis: 26%;
-  flex-grow: 1;    
-} */
-
 .outputEntry:hover {
   cursor: pointer;
   background-color: #62686d;

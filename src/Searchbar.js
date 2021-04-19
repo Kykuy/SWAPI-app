@@ -57,8 +57,7 @@ function Searchbar(props) {
     })
     }
    </datalist>
-  : null;
-  // console.log('searchData', searchData);
+  : null;  
 
   const cancelSearch = props.isSearching ? <button className = 'cancelSearchBtn' onClick = {(event) => {
     props.setIsSearching(false);
@@ -90,28 +89,9 @@ function Searchbar(props) {
 
       <fieldset>
         <legend className = 'selectFormLegend'>What are we searching for?</legend>
-
-        {/* <input type = 'radio' value = 'people' name = 'dataType' id = 'people' checked = {props.selected === 'people'} onChange = {(e) => {props.setFetchUrl(`https://swapi.py4e.com/api/${e.target.value}/`); props.setSelectedDataType(e.target.value); props.setIsLoading(true);}}></input>
-        <label htmlFor = 'people'>People</label>
-
-        <input type = 'radio' value = 'vehicles' name = 'dataType' id = 'vehicles' checked = {props.selected === 'vehicles'} onChange = {(e) => {props.setFetchUrl(`https://swapi.py4e.com/api/${e.target.value}/`); props.setSelectedDataType(e.target.value); props.setIsLoading(true);}}></input>
-        <label htmlFor = 'vehicles'>Vehicles</label>
-
-        <input type = 'radio' value = 'starships' name = 'dataType' id = 'starships' checked = {props.selected === 'starships'} onChange = {(e) => {props.setFetchUrl(`https://swapi.py4e.com/api/${e.target.value}/`); props.setSelectedDataType(e.target.value); props.setIsLoading(true);}}></input>
-        <label htmlFor = 'starships'>Starships</label>
-
-        <input type = 'radio' value = 'planets' name = 'dataType' id = 'planets' checked = {props.selected === 'planets'} onChange = {(e) => {props.setFetchUrl(`https://swapi.py4e.com/api/${e.target.value}/`); props.setSelectedDataType(e.target.value); props.setIsLoading(true);}}></input>
-        <label htmlFor = 'planets'>Planets</label>
-
-        <input type = 'radio' value = 'species' name = 'dataType' id = 'species' checked = {props.selected === 'species'} onChange = {(e) => {props.setFetchUrl(`https://swapi.py4e.com/api/${e.target.value}/`); props.setSelectedDataType(e.target.value); props.setIsLoading(true);}}></input>
-        <label htmlFor = 'species'>Species</label>
-
-        <input type = 'radio' value = 'films' name = 'dataType' id = 'films' checked = {props.selected === 'films'} onChange = {(e) => {props.setFetchUrl(`https://swapi.py4e.com/api/${e.target.value}/`); props.setSelectedDataType(e.target.value); props.setIsLoading(true);}}></input>
-        <label htmlFor = 'films'>Films</label> */}
-
         {categoryLabels}
-
       </fieldset>
+
       <section className = 'searchbar'>
         <label htmlFor = 'search-input' className = 'searchInputLabel'>Search for Star Wars data!</label>
         <input list = 'searchList' className = 'searchInput' type = 'search' value = {searchInput} id = 'search-input' size = '24' disabled = {props.selected === 'films'}
@@ -119,7 +99,9 @@ function Searchbar(props) {
           onChange = {(event) => setSearchInput(event.target.value)}
           onKeyDown = {(event) => event.key === 'Enter' ? startSearch() : null}
         ></input>
+
         {datalist}
+
         <button className = 'searchBtn' disabled = {props.selected === 'films' || searchInput.length < 1} onClick = {(event) => {
           startSearch();
         }}>Start search</button>

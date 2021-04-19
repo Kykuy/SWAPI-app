@@ -47,18 +47,6 @@
   justify-content: space-between;  
 }
 
-/* .pages :is(button:not(:first-of-type), span) {
-  margin-left: 5px;
-} */
-
-/* .pages button:first-of-type {
-  margin-right: auto;
-}
-
-.pages button:last-of-type {
-  margin-left: auto;
-} */
-
 .pageToJumpLabel {
   margin-left: 5px;
 }
