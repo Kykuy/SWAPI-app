@@ -11,6 +11,10 @@ body {
   background-color: #2a2e33;  
   color: #c8c8c8;
 }
+/* 
+main {
+  margin-bottom: auto;
+} */
 
 .wrapper {
   margin: 0 auto;
@@ -35,6 +39,10 @@ body {
   text-align: center;
   padding-bottom: 5px;
   background-color: #2a2e33;
+}
+
+.loading-ring + .footer {
+  margin-top: 0;
 }
 
 .footerLink {
