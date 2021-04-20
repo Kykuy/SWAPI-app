@@ -49,8 +49,8 @@
 .datatypeInput::before {
   position: absolute;    
   content: '|';
-  top: -8px;
-  left: -7px;
+  top: -5px;
+  left: -1px;
   font-size: 12px;
   font-weight: 900;
   transform: skewX(36deg);  
@@ -59,8 +59,8 @@
 
 .datatypeInput::after {
   position: absolute;  
-  top: -18px;
-  right: -7px;
+  top: -11px;
+  right: -1px;
   content: '|';
   font-size: 16px;
   font-weight: 900;
@@ -89,19 +89,26 @@
   text-decoration: underline;
 }
 
-.datatypeInput:checked::before,
-.datatypeInput:checked::after {
-  opacity: 1;  
-}
-
 .datatypeInput:checked::before {
   top: -5px;
   left: -1px;
+  animation: 0.15s linear 1 forwards fadein;
 }
 
 .datatypeInput:checked::after {
   top: -11px;
   right: -1px;
+  animation: 0.15s linear 0.15s 1 forwards fadein;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .datatypeInput:nth-of-type(4):checked::after {
