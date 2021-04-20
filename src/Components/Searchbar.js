@@ -21,8 +21,9 @@ function Searchbar(props) {
       setSearchInput('');
     }
     }
-    disabled = {props.isLoading && props.selected !== datatype.toLowerCase()}></input>
-    <label className = 'datatypeLabel' htmlFor = {datatype.toLowerCase()}>{datatype}</label>
+    disabled = {props.isLoading && props.selected !== datatype.toLowerCase()}
+    title = {props.isLoading && props.selected !== datatype.toLowerCase() ? 'Wait until data is loaded before selecting another data category' : ''}></input>
+    <label className = 'datatypeLabel' htmlFor = {datatype.toLowerCase()} title = {props.isLoading && props.selected !== datatype.toLowerCase() ? 'Wait until data is loaded' : ''}>{datatype}</label>
     </Fragment>
    }) :
 
@@ -39,8 +40,10 @@ function Searchbar(props) {
             props.setIsSearching(false);
             setSearchInput('');
           }
-          }></input>
-          <label className = 'datatypeLabel' htmlFor = {datatype.toLowerCase()}>{datatype}</label>
+          }
+          disabled = {props.isLoading && props.selected !== datatype.toLowerCase()}
+          title = {props.isLoading && props.selected !== datatype.toLowerCase() ? 'Wait until data is loaded before selecting another data category' : ''}></input>
+          <label className = 'datatypeLabel' htmlFor = {datatype.toLowerCase()} title = {props.isLoading && props.selected !== datatype.toLowerCase() ? 'Wait until data is loaded' : ''}>{datatype}</label>
         </span>
         </Fragment>
       })}

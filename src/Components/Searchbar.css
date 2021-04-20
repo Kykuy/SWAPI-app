@@ -35,7 +35,7 @@
   width: 16px;
   height: 16px;
   font-size: 16px;      
-  border: 2px solid wheat;
+  border: 2px solid gray;
   border-radius: 50%;
   transition: 0.2s all linear;  
 }
@@ -68,8 +68,20 @@
   color: wheat;  
 } 
 
+.datatypeInput:disabled {
+  cursor: not-allowed;
+  border-color: gray;
+  opacity: 0.75;
+}
+
+.datatypeInput:disabled + .datatypeLabel {
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
 .datatypeInput:checked {
-  box-shadow: 0px 0px 5px #ffe300;  
+  box-shadow: 0px 0px 5px #ffe300;
+  border-color: wheat;  
 }
 
 .datatypeInput:checked + .datatypeLabel {
@@ -97,7 +109,6 @@
 }
 
 .datatypeInput:not(:first-of-type),
-.datatypeLabel,
 .searchInput {
   margin-left: 5px;
 }
@@ -105,6 +116,7 @@
 .datatypeLabel {
   display: inline-block;     
   vertical-align: 0.1em;
+  padding-left: 5px;
 }
 
 .searchbar,
