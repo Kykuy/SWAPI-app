@@ -25,6 +25,7 @@
   border-color: #62686d;
   box-shadow: none;
   border-style: solid;
+  border-radius: 4px;
   transition: 0.2s all ease-in-out; 
 }
 
@@ -51,15 +52,30 @@
   margin-left: 5px;
 }
 
+.pagination .jumpToPageButton {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 .itemsPerPageLabel {
   margin-left: auto;
 }
 
+.pageToJumpInput {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
 .pageToJumpInput,
 .itemsPerPageSelect {
+  border: 1px solid #ccc;
   text-align: center;
   margin-left: 2px;
   max-width: 40px;
+}
+
+.itemsPerPageSelect, .itemsPerPageSelect option {
+  border-radius: 4px;
 }
 
 .pageToJumpInput:focus,

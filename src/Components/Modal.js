@@ -118,6 +118,7 @@ function Modal(props) {
                   <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')}</p>
                 </article>
               );
+
             case 'planets':
               return key === 'rotation_period' ? (
                 <article className = 'modal-row' key = {key}>
@@ -144,6 +145,7 @@ function Modal(props) {
                   <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')}</p>
                 </article>
               );
+
             case 'species':
               return key === 'average_lifespan' ? (
                 <article className = 'modal-row' key = {key}>
@@ -158,7 +160,8 @@ function Modal(props) {
                   <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')}</p>
                 </article>
               );
-            case 'films':
+
+            default:
               return key !== 'episode_id' ? (
                 <article className = 'modal-row' key = {key}>
                   <p>{makeStringReadable(key)}:</p><p> {value?.length > 0 ? makeStringReadable(value) : makeStringReadable('none')}</p>
@@ -167,8 +170,7 @@ function Modal(props) {
                 <article className = 'modal-row' key = {key}>                  
                   <p>{makeStringReadable(key)}</p><p>{value}</p>
                 </article>
-              );
-            default:
+              );            
           }
         }
         )}      

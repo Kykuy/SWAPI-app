@@ -130,7 +130,7 @@ function App() {
         <main>
           <Searchbar searchData = {searchData} setData = {setData} screenWidth = {screenWidth} isSearching = {isSearching} setIsSearching = {setIsSearching} selected = {selectedDataType} isLoading = {isLoading} setIsLoading = {setIsLoading} setFetchUrl = {setFetchUrl} setSelectedDataType = {setSelectedDataType} setPageSelected = {setPageSelected} />                   
         </main>
-        <div class="loading-ring"><div></div><div></div><div></div><div></div>
+        <div className = "loading-ring"><div></div><div></div><div></div><div></div>
         </div> 
         <footer className = 'footer'>
           <a href = 'https://swapi.py4e.com/' className = 'footerLink'>

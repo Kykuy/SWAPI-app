@@ -116,7 +116,7 @@ function Pagination(props) {
       {wrongPageNumber}
     </div>
     
-    <button disabled = {pageToJumpTo < 1 || isNaN(pageToJumpTo)} onClick = {(event) => {
+    <button className = 'jumpToPageButton' disabled = {pageToJumpTo < 1 || isNaN(pageToJumpTo)} onClick = {(event) => {
       props.setPageSelected(pageToJumpTo);
     }}
     >Jump</button>
