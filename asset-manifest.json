@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/SWAPI-app/static/css/main.16647c7b.chunk.css",
-    "main.js": "/SWAPI-app/static/js/main.ac1133b2.chunk.js",
-    "main.js.map": "/SWAPI-app/static/js/main.ac1133b2.chunk.js.map",
+    "main.css": "/SWAPI-app/static/css/main.c0ebb775.chunk.css",
+    "main.js": "/SWAPI-app/static/js/main.30a7700f.chunk.js",
+    "main.js.map": "/SWAPI-app/static/js/main.30a7700f.chunk.js.map",
     "runtime-main.js": "/SWAPI-app/static/js/runtime-main.83d648cf.js",
     "runtime-main.js.map": "/SWAPI-app/static/js/runtime-main.83d648cf.js.map",
     "static/js/2.bc6a1f20.chunk.js": "/SWAPI-app/static/js/2.bc6a1f20.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.c7194938.chunk.js": "/SWAPI-app/static/js/3.c7194938.chunk.js",
     "static/js/3.c7194938.chunk.js.map": "/SWAPI-app/static/js/3.c7194938.chunk.js.map",
     "index.html": "/SWAPI-app/index.html",
-    "static/css/main.16647c7b.chunk.css.map": "/SWAPI-app/static/css/main.16647c7b.chunk.css.map",
+    "static/css/main.c0ebb775.chunk.css.map": "/SWAPI-app/static/css/main.c0ebb775.chunk.css.map",
     "static/js/2.bc6a1f20.chunk.js.LICENSE.txt": "/SWAPI-app/static/js/2.bc6a1f20.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.83d648cf.js",
     "static/js/2.bc6a1f20.chunk.js",
-    "static/css/main.16647c7b.chunk.css",
-    "static/js/main.ac1133b2.chunk.js"
+    "static/css/main.c0ebb775.chunk.css",
+    "static/js/main.30a7700f.chunk.js"
   ]
 }
