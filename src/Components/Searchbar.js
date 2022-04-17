@@ -13,7 +13,7 @@ function Searchbar(props) {
     return <Fragment key = {datatype}>
     <input type = 'radio' value = {datatype.toLowerCase()} name = 'dataType' className = 'datatypeInput' id = {datatype.toLowerCase()} checked = {props.selected === datatype.toLowerCase()}
     onChange = {(event) => {
-      props.setFetchUrl(`https://swapi.py4e.com/api/${event.target.value}/`);
+      props.setFetchUrl(`https://swapi.dev/api/${event.target.value}/`);
       props.setSelectedDataType(event.target.value);
       props.setPageSelected(1);
       props.setIsLoading(true);
@@ -33,7 +33,7 @@ function Searchbar(props) {
         <span>
           <input type = 'radio' value = {datatype.toLowerCase()} name = 'dataType' className = 'datatypeInput' id = {datatype.toLowerCase()} checked = {props.selected === datatype.toLowerCase()}
           onChange = {(event) => {
-            props.setFetchUrl(`https://swapi.py4e.com/api/${event.target.value}/`);
+            props.setFetchUrl(`https://swapi.dev/api/${event.target.value}/`);
             props.setSelectedDataType(event.target.value);
             props.setPageSelected(1);
             props.setIsLoading(true);

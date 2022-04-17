@@ -16,11 +16,12 @@ const Output = (props) => {
     <>         
     <section className = 'output'>      
       {props.pages[props.pageSelected]?.map(item => {
+        console.log(item);
         let additionalInfo;
         
         if (selectedDataType === 'people') {
           if (item?.species.length < 1) {
-            additionalInfo = `Unknown species, ${item?.gender}`;
+            additionalInfo = `Unspecified species, ${item?.gender}`;
           } else additionalInfo = `${speciesNames[item?.species]}, ${item?.gender}`;
         } else if (selectedDataType === 'vehicles') {
           additionalInfo = makeStringReadable(item?.vehicle_class);
