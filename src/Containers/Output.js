@@ -10,17 +10,16 @@ const Output = (props) => {
   const modal = showModal ? 
   (
     <Modal setShowModal = {setShowModal} modalData = {modalData} setModalData = {setModalData} selectedDataType = {selectedDataType}/>
-  ) : null;  
+  ) : null;
 
   return selectedDataType !== 'films' ? (
     <>         
     <section className = 'output'>      
       {props.pages[props.pageSelected]?.map(item => {
-        console.log(item);
         let additionalInfo;
         
         if (selectedDataType === 'people') {
-          if (item?.species.length < 1) {
+          if (item?.species?.length < 1) {
             additionalInfo = `Unspecified species, ${item?.gender}`;
           } else additionalInfo = `${speciesNames[item?.species]}, ${item?.gender}`;
         } else if (selectedDataType === 'vehicles') {

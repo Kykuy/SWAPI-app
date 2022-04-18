@@ -51,8 +51,6 @@ function Modal(props) {
 
     getDataForModal(modalData);
   }, [modalData, setIsModalLoading]);
-  console.log('modalDataToDisplay', modalDataToDisplay);
-
 
   const modal = isModalLoading ? <p className = 'modal-window'>Loading...</p> :
   <section className = 'modal-window'>          

@@ -59,7 +59,7 @@
 
 .datatypeInput::after {
   position: absolute;  
-  top: -11px;
+  top: -9px;
   right: -1px;
   content: '|';
   font-size: 16px;
@@ -96,8 +96,6 @@
 }
 
 .datatypeInput:checked::after {
-  top: -11px;
-  right: -1px;
   animation: 0.15s linear 0.15s 1 forwards fadein;
 }
 
