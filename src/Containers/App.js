@@ -19,7 +19,7 @@ function App() {
   const [isSearching, setIsSearching] = useState(false);
 
   const [selectedDataType, setSelectedDataType] = useState('people');
-  const [fetchUrl, setFetchUrl] = useState(`https://swapi.dev/api/${selectedDataType}/`); 
+  const [fetchUrl, setFetchUrl] = useState(`https://swapi.py4e.com/api/${selectedDataType}/`); 
 
   const [pages, setPages] = useState({});
   const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -34,7 +34,7 @@ function App() {
         let speciesDictionary = {};
         let total = [];
 
-        let response = await fetch(`https://swapi.dev/api/species/`);
+        let response = await fetch(`https://swapi.py4e.com/api/species/`);
         let data = await response.json();    
         total = total.concat(data.results);
   

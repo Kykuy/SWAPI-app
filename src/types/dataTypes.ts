@@ -1,0 +1,110 @@
+export interface PeopleEntry {
+  "name": string,
+	"height": string,
+	"mass": string,
+	"hair_color": string,
+	"skin_color": string,
+	"eye_color": string,
+	"birth_year": string,
+	"gender": string,
+	"homeworld": PlanetEntry,
+	"films": FilmEntry[],
+	"species": SpeciesEntry[],
+	"vehicles": VehicleEntry[],
+	"starships": StarshipEntry[],
+	"created": string,
+	"edited": string,
+	"url": string,
+}
+
+export interface VehicleEntry {
+  "name": string, 
+  "model": string, 
+  "manufacturer": string, 
+  "cost_in_credits": string, 
+  "length": string, 
+  "max_atmosphering_speed": string, 
+  "crew": string, 
+  "passengers": string, 
+  "cargo_capacity": string,
+  "consumables": string,
+  "vehicle_class": string,
+  "pilots": PeopleEntry[], 
+  "films": FilmEntry[], 
+  "created": string, 
+  "edited": string, 
+  "url": string
+}
+
+export interface StarshipEntry {
+  "name": string,
+	"model": string,
+	"manufacturer": string,
+	"cost_in_credits": `${number}`,
+	"length": `${number}`,
+	"max_atmosphering_speed": string,
+	"crew": `${number}`,
+	"passengers": `${number}`,
+	"cargo_capacity": `${number}`,
+	"consumables": string,
+	"hyperdrive_rating": `${number}`,
+	"MGLT": `${number}`,
+	"starship_class": string,
+	"pilots": PeopleEntry[],
+	"films": FilmEntry[],
+	"created": string,
+	"edited": string,
+	"url": string,
+}
+
+export interface PlanetEntry {  
+  "name": string,
+  "rotation_period": string,
+  "orbital_period": string,
+  "diameter": string,
+  "climate": string,
+  "gravity": string,
+  "terrain": string,
+  "surface_water": string,
+  "population": string,
+  "residents": PeopleEntry[],
+  "films": FilmEntry[],
+  "created": string,
+  "edited": string,
+  "url": string  
+}
+
+export interface SpeciesEntry {
+  "name": string,
+  "classification": string,
+  "designation": string,
+  "average_height": `${number}`,
+  "skin_colors": string,
+  "hair_colors": string,
+  "eye_colors": string,
+  "average_lifespan": `${number}`,
+  "homeworld": string,
+  "language": string,
+  "people": PeopleEntry[],
+  "films": FilmEntry[],
+  "created": string,
+  "edited": string,
+  "url": string
+}
+
+export interface FilmEntry {
+  "title": string,
+  "episode_id": number,
+  "opening_crawl": string,
+  "director": string,
+  "producer": string,
+  "release_date": string,
+  "characters": PeopleEntry[],
+  "planets": PlanetEntry[],
+  "starships": StarshipEntry[],
+  "vehicles": VehicleEntry[],
+  "species": SpeciesEntry[],
+  "created": string,
+  "edited": string,
+  "url": string
+}

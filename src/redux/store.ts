@@ -1,8 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
+import dataReducer from './dataReducer';
+import pagesReducer from './pagesReducer';
 
 export const store = configureStore({
   reducer: {
-
+    dataReducer,
+    pagesReducer,
   }
 })
 

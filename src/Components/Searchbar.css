@@ -109,9 +109,9 @@
   }
 }
 
-.datatypeInput:nth-of-type(4):checked::after {
+/* .datatypeInput:nth-of-type(4):checked::after {
   right: -2px;
-}
+} */
 
 .datatypeInput:not(:first-of-type),
 .searchInput {

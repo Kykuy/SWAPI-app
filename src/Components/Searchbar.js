@@ -13,14 +13,13 @@ function Searchbar(props) {
     return <Fragment key = {datatype}>
     <input type = 'radio' value = {datatype.toLowerCase()} name = 'dataType' className = 'datatypeInput' id = {datatype.toLowerCase()} checked = {props.selected === datatype.toLowerCase()}
     onChange = {(event) => {
-      props.setFetchUrl(`https://swapi.dev/api/${event.target.value}/`);
+      props.setFetchUrl(`https://swapi.py4e.com/api/${event.target.value}/`);
       props.setSelectedDataType(event.target.value);
       props.setPageSelected(1);
       props.setIsLoading(true);
       props.setIsSearching(false);
       setSearchInput('');
-    }
-    }
+    }}
     disabled = {props.isLoading && props.selected !== datatype.toLowerCase()}
     title = {props.isLoading && props.selected !== datatype.toLowerCase() ? 'Wait until data is loaded before selecting another data category' : ''}></input>
     <label className = 'datatypeLabel' htmlFor = {datatype.toLowerCase()} title = {props.isLoading && props.selected !== datatype.toLowerCase() ? 'Wait until data is loaded' : ''}>{datatype}</label>
@@ -33,7 +32,7 @@ function Searchbar(props) {
         <span>
           <input type = 'radio' value = {datatype.toLowerCase()} name = 'dataType' className = 'datatypeInput' id = {datatype.toLowerCase()} checked = {props.selected === datatype.toLowerCase()}
           onChange = {(event) => {
-            props.setFetchUrl(`https://swapi.dev/api/${event.target.value}/`);
+            props.setFetchUrl(`https://swapi.py4e.com/api/${event.target.value}/`);
             props.setSelectedDataType(event.target.value);
             props.setPageSelected(1);
             props.setIsLoading(true);
